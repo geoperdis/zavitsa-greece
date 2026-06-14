@@ -1,441 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Save Zavitsa &amp; Parnon — Take Action Now</title>
-
-  <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="Save Zavitsa &amp; Mount Parnon — Take Action Now">
-  <meta property="og:description" content="A UNESCO Biosphere Reserve is being blasted for industrial wind farms. The karst aquifer feeding 50,000 acres of farmland is at risk. Public consultation closes June 24. Two clicks. 30 seconds.">
+  <title>Σώστε τον Ζαβίτσα &amp; τον Πάρνωνα / Save Zavitsa &amp; Mount Parnon</title>
+  <meta property="og:title" content="Σώστε τον Ζαβίτσα &amp; τον Πάρνωνα: Δράστε Τώρα / Save Zavitsa &amp; Mount Parnon: Take Action Now">
+  <meta property="og:description" content="Αποθεματικό Βιόσφαιρας UNESCO υπό απειλή από βιομηχανικά αιολικά πάρκα. Η διαβούλευση κλείνει 24 Ιουνίου. Δύο κλικ, 30 δευτερόλεπτα. / A UNESCO Biosphere Reserve is being blasted for industrial wind farms. Consultation closes June 24.">
   <meta property="og:url" content="https://geoperdis.github.io/zavitsa-greece/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Save Zavitsa &amp; Mount Parnon — Take Action Now">
-  <meta name="twitter:description" content="A UNESCO Biosphere Reserve is being blasted for industrial wind farms. Public consultation closes June 24.">
-
+  <meta name="twitter:title" content="Σώστε τον Ζαβίτσα / Save Zavitsa &amp; Mount Parnon">
+  <meta name="twitter:description" content="Αποθεματικό Βιόσφαιρας UNESCO υπό απειλή. Διαβούλευση κλείνει 24 Ιουνίου. / UNESCO Biosphere Reserve at risk. Consultation closes June 24.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --green-dark:   #1a3a1a;
-      --green-mid:    #2a5a2a;
-      --green-light:  #eef4ee;
-      --amber-dark:   #7a3800;
-      --amber-mid:    #a04a00;
-      --gold:         #c8a951;
-      --gold-hover:   #e0bc60;
-      --red:          #b30000;
-      --cream:        #f5f0e8;
-      --text:         #2c2c2c;
-      --muted:        #555;
-      --border:       #ddd;
+      --green-dark:  #1a3a1a;
+      --green-mid:   #2a5a2a;
+      --green-light: #eef4ee;
+      --amber-dark:  #7a3800;
+      --amber-mid:   #a04a00;
+      --gold:        #c8a951;
+      --gold-hover:  #e0bc60;
+      --red:         #b30000;
+      --cream:       #f5f0e8;
+      --text:        #2c2c2c;
+      --muted:       #555;
+      --border:      #ddd;
     }
+    body { font-family: Georgia,'Times New Roman',serif; background:var(--cream); color:var(--text); line-height:1.7; font-size:16px; }
 
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 16px;
-    }
+    /* LANG TOGGLE */
+    .lang-bar { background:var(--green-dark); text-align:right; padding:0.35rem 1rem; }
+    .lang-bar button { background:transparent; border:1px solid rgba(255,255,255,0.4); color:rgba(255,255,255,0.75); font-family:Arial,sans-serif; font-size:0.78rem; font-weight:bold; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:3px; cursor:pointer; margin-left:0.4rem; transition:background 0.15s; }
+    .lang-bar button.active { background:var(--gold); color:var(--green-dark); border-color:var(--gold); }
+    .lang-bar button:hover:not(.active) { background:rgba(255,255,255,0.15); }
 
-    /* ── BANNERS ── */
-    .banner {
-      text-align: center;
-      padding: 0.6rem 1rem;
-      font-size: 0.9rem;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-    }
+    /* LANGUAGE DISPLAY */
+    .gr { }
+    .en { display:none; }
+    body.show-en .gr { display:none; }
+    body.show-en .en { display:block; }
+    span.gr { display:inline; }
+    span.en { display:none; }
+    body.show-en span.gr { display:none; }
+    body.show-en span.en { display:inline; }
 
-    .banner-red    { background: var(--red);        color: white; }
-    .banner-amber  { background: var(--amber-dark);  color: white; }
+    /* BANNERS */
+    .banner { text-align:center; padding:0.6rem 1rem; font-size:0.9rem; font-family:Arial,sans-serif; font-weight:bold; letter-spacing:0.05em; }
+    .banner-red   { background:var(--red);       color:white; }
+    .banner-amber { background:var(--amber-dark); color:white; }
 
-    /* ── HEADER ── */
-    header {
-      background: var(--green-dark);
-      color: var(--cream);
-      padding: 1.5rem 1.5rem 1.25rem;
-      text-align: center;
-    }
+    /* HEADER */
+    header { background:var(--green-dark); color:var(--cream); padding:1.5rem 1.5rem 1.25rem; text-align:center; }
+    header h1 { font-size:1.85rem; letter-spacing:0.02em; margin-bottom:0.5rem; line-height:1.25; }
+    header .subhead { font-size:0.97rem; opacity:0.85; max-width:580px; margin:0 auto 0.9rem; line-height:1.55; }
+    .not-against { display:inline-block; font-size:0.78rem; font-family:Arial,sans-serif; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); padding:0.3rem 0.85rem; border-radius:3px; letter-spacing:0.02em; line-height:1.5; max-width:560px; }
 
-    header h1 {
-      font-size: 1.85rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
-    }
+    /* MAIN */
+    main { max-width:700px; margin:0 auto; padding:1.75rem 1.25rem 2rem; }
 
-    header .subhead {
-      font-size: 0.97rem;
-      opacity: 0.85;
-      max-width: 580px;
-      margin: 0 auto 0.9rem;
-      line-height: 1.55;
-    }
+    /* WHY IT MATTERS */
+    .why-matters { background:white; border-left:5px solid var(--green-dark); padding:1.25rem 1.4rem; margin-bottom:1.5rem; border-radius:0 6px 6px 0; }
+    .section-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted); font-family:Arial,sans-serif; margin-bottom:0.85rem; }
+    .why-matters ul { list-style:none; padding:0; }
+    .why-matters li { padding:0.55rem 0; border-bottom:1px solid #eee; font-size:0.95rem; line-height:1.55; }
+    .why-matters li:last-child { border-bottom:none; padding-bottom:0; }
+    .why-matters li strong { color:var(--green-dark); }
 
-    .not-against {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-family: Arial, sans-serif;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 0.3rem 0.85rem;
-      border-radius: 3px;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-      max-width: 540px;
-    }
+    /* ACTION BOXES */
+    .action-primary { background:var(--green-dark); color:white; padding:1.75rem 1.5rem 1.5rem; border-radius:8px; text-align:center; margin-bottom:1rem; }
+    .action-primary h2 { font-size:1.25rem; margin-bottom:0.5rem; letter-spacing:0.01em; }
+    .action-primary .action-desc { font-size:0.92rem; opacity:0.85; max-width:500px; margin:0 auto 1.25rem; line-height:1.5; }
+    .btn-primary { display:inline-block; background:var(--gold); color:var(--green-dark); padding:1rem 2.5rem; font-size:1.1rem; font-weight:bold; font-family:Arial,sans-serif; text-decoration:none; border-radius:5px; letter-spacing:0.04em; box-shadow:0 4px 14px rgba(0,0,0,0.35); transition:background 0.15s,transform 0.1s; text-transform:uppercase; }
+    .btn-primary:hover { background:var(--gold-hover); transform:translateY(-1px); }
+    .btn-primary:active { transform:translateY(0); }
+    .how-it-works { margin-top:0.85rem; font-size:0.82rem; opacity:0.75; font-family:Arial,sans-serif; }
+    .recipients { margin-top:0.9rem; font-size:0.78rem; opacity:0.65; line-height:1.7; font-family:Arial,sans-serif; }
 
-    /* ── MAIN ── */
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 1.75rem 1.25rem 2rem;
-    }
+    .action-secondary { background:var(--amber-dark); color:white; padding:1.4rem 1.5rem 1.25rem; border-radius:8px; text-align:center; margin-bottom:1.5rem; }
+    .action-secondary h2 { font-size:1.1rem; margin-bottom:0.4rem; }
+    .action-secondary .action-desc { font-size:0.89rem; opacity:0.85; max-width:500px; margin:0 auto 1rem; line-height:1.5; }
+    .btn-secondary { display:inline-block; background:rgba(255,255,255,0.9); color:var(--amber-dark); padding:0.75rem 2rem; font-size:1rem; font-weight:bold; font-family:Arial,sans-serif; text-decoration:none; border-radius:5px; letter-spacing:0.03em; transition:background 0.15s; text-transform:uppercase; }
+    .btn-secondary:hover { background:white; }
 
-    /* ── WHY IT MATTERS ── */
-    .why-matters {
-      background: white;
-      border-left: 5px solid var(--green-dark);
-      padding: 1.25rem 1.4rem;
-      margin-bottom: 1.5rem;
-      border-radius: 0 6px 6px 0;
-    }
+    /* COUNTDOWN */
+    .countdown-bar { display:flex; align-items:center; justify-content:center; gap:0.75rem; background:#fff3cd; border:1px solid #f0c040; border-radius:6px; padding:0.75rem 1rem; margin-bottom:1.5rem; font-family:Arial,sans-serif; }
+    .countdown-number { font-size:2rem; font-weight:bold; color:var(--red); line-height:1; }
+    .countdown-label { font-size:0.85rem; color:var(--text); line-height:1.4; }
+    .countdown-label strong { display:block; font-size:1rem; }
 
-    .section-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      margin-bottom: 0.85rem;
-    }
+    /* SHARE NUDGE */
+    .share-nudge { text-align:center; font-size:0.88rem; font-family:Arial,sans-serif; color:var(--muted); margin-bottom:1.75rem; padding:0.75rem; background:white; border-radius:6px; }
+    .share-nudge a { color:var(--green-dark); font-weight:bold; text-decoration:none; word-break:break-all; }
+    .share-nudge a:hover { text-decoration:underline; }
 
-    .why-matters ul {
-      list-style: none;
-      padding: 0;
-    }
+    /* FACT CARDS */
+    .facts { display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin-bottom:2rem; }
+    .fact-card { background:white; border-radius:6px; padding:0.9rem 1rem; border-top:4px solid var(--gold); }
+    .fact-card.deadline { border-top-color:var(--red); }
+    .fact-card h4 { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-family:Arial,sans-serif; margin-bottom:0.4rem; }
+    .fact-card p { font-size:0.9rem; line-height:1.55; }
 
-    .why-matters li {
-      padding: 0.55rem 0;
-      border-bottom: 1px solid #eee;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
+    /* FULL STORY */
+    .full-story { background:white; border-left:5px solid var(--gold); padding:1.75rem 1.5rem; border-radius:0 6px 6px 0; margin-bottom:2rem; }
+    .full-story h2 { font-size:1.1rem; color:var(--green-dark); margin-bottom:1.25rem; }
+    .full-story h3 { font-size:0.95rem; color:var(--green-dark); margin-top:1.25rem; margin-bottom:0.5rem; }
+    .full-story p { font-size:0.95rem; margin-bottom:0.85rem; line-height:1.7; }
+    .full-story p:last-child { margin-bottom:0; }
 
-    .why-matters li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+    /* FOOTER */
+    footer { text-align:center; padding:1.5rem; font-size:0.8rem; color:var(--muted); border-top:1px solid var(--border); }
 
-    .why-matters li strong {
-      color: var(--green-dark);
-    }
-
-    /* ── ACTION BOXES ── */
-
-    /* Primary: big, dominant, unmissable */
-    .action-primary {
-      background: var(--green-dark);
-      color: white;
-      padding: 1.75rem 1.5rem 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .action-primary h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.01em;
-    }
-
-    .action-primary .action-desc {
-      font-size: 0.92rem;
-      opacity: 0.85;
-      max-width: 500px;
-      margin: 0 auto 1.25rem;
-      line-height: 1.5;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--green-dark);
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      text-decoration: none;
-      border-radius: 5px;
-      letter-spacing: 0.04em;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-      transition: background 0.15s, transform 0.1s;
-      text-transform: uppercase;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    .how-it-works {
-      margin-top: 0.85rem;
-      font-size: 0.82rem;
-      opacity: 0.75;
-      font-family: Arial, sans-serif;
-    }
-
-    .recipients {
-      margin-top: 0.9rem;
-      font-size: 0.78rem;
-      opacity: 0.65;
-      line-height: 1.7;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Secondary: visually distinct, clearly secondary */
-    .action-secondary {
-      background: var(--amber-dark);
-      color: white;
-      padding: 1.4rem 1.5rem 1.25rem;
-      border-radius: 8px;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .action-secondary h2 {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .action-secondary .action-desc {
-      font-size: 0.89rem;
-      opacity: 0.85;
-      max-width: 500px;
-      margin: 0 auto 1rem;
-      line-height: 1.5;
-    }
-
-    .btn-secondary {
-      display: inline-block;
-      background: rgba(255,255,255,0.9);
-      color: var(--amber-dark);
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      text-decoration: none;
-      border-radius: 5px;
-      letter-spacing: 0.03em;
-      transition: background 0.15s;
-      text-transform: uppercase;
-    }
-
-    .btn-secondary:hover { background: white; }
-
-    /* ── COUNTDOWN ── */
-    .countdown-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: #fff3cd;
-      border: 1px solid #f0c040;
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.5rem;
-      font-family: Arial, sans-serif;
-    }
-
-    .countdown-number {
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--red);
-      line-height: 1;
-    }
-
-    .countdown-label {
-      font-size: 0.85rem;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .countdown-label strong {
-      display: block;
-      font-size: 1rem;
-    }
-
-    /* ── SHARE NUDGE ── */
-    .share-nudge {
-      text-align: center;
-      font-size: 0.88rem;
-      font-family: Arial, sans-serif;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-      padding: 0.75rem;
-      background: white;
-      border-radius: 6px;
-    }
-
-    .share-nudge a {
-      color: var(--green-dark);
-      font-weight: bold;
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    .share-nudge a:hover { text-decoration: underline; }
-
-    /* ── FACT CARDS ── */
-    .facts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      margin-bottom: 2rem;
-    }
-
-    .fact-card {
-      background: white;
-      border-radius: 6px;
-      padding: 0.9rem 1rem;
-      border-top: 4px solid var(--gold);
-    }
-
-    .fact-card.deadline { border-top-color: var(--red); }
-
-    .fact-card h4 {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      margin-bottom: 0.4rem;
-    }
-
-    .fact-card p {
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-
-    /* ── FULL STORY ── */
-    .full-story {
-      background: white;
-      border-left: 5px solid var(--gold);
-      padding: 1.75rem 1.5rem;
-      border-radius: 0 6px 6px 0;
-      margin-bottom: 2rem;
-    }
-
-    .full-story h2 {
-      font-size: 1.1rem;
-      color: var(--green-dark);
-      margin-bottom: 1.25rem;
-    }
-
-    .full-story h3 {
-      font-size: 0.95rem;
-      color: var(--green-dark);
-      margin-top: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .full-story p {
-      font-size: 0.95rem;
-      margin-bottom: 0.85rem;
-      line-height: 1.7;
-    }
-
-    .full-story p:last-child { margin-bottom: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 540px) {
-      header h1    { font-size: 1.45rem; }
-      .facts       { grid-template-columns: 1fr; }
-      .btn-primary { padding: 0.9rem 1.5rem; font-size: 1rem; width: 100%; }
-      .btn-secondary { width: 100%; }
-      main         { padding: 1.25rem 1rem 1.5rem; }
+    /* MOBILE */
+    @media (max-width:540px) {
+      header h1 { font-size:1.45rem; }
+      .facts { grid-template-columns:1fr; }
+      .btn-primary { padding:0.9rem 1.5rem; font-size:1rem; width:100%; }
+      .btn-secondary { width:100%; }
+      main { padding:1.25rem 1rem 1.5rem; }
     }
   </style>
 </head>
-<body>
+<body class="show-gr">
 
-  <div class="banner banner-red">
-    &#x1F6D1;&nbsp; MARCH ON ZAVITSA | SUNDAY 14 JUNE 2026 | KYNOURIA, GREECE
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-bar">
+    <button id="btn-gr" class="active" onclick="setLang('gr')">ΕΛ</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 
+  <!-- BANNERS -->
+  <div class="banner banner-red">
+    <span class="gr">&#x1F6D1;&nbsp; ΑΝΟΔΟΣ ΣΤΟΝ ΖΑΒΙΤΣΑ | ΚΥΡΙΑΚΗ 14 ΙΟΥΝΙΟΥ 2026 | ΚΥΝΟΥΡΙΑ, ΕΛΛΑΔΑ</span>
+    <span class="en">&#x1F6D1;&nbsp; MARCH ON ZAVITSA | SUNDAY 14 JUNE 2026 | KYNOURIA, GREECE</span>
+  </div>
   <div class="banner banner-amber">
-    &#x23F0;&nbsp; PUBLIC CONSULTATION CLOSES JUNE 24, 2026 | <span id="days-left">10</span> DAYS LEFT
+    <span class="gr">&#x23F0;&nbsp; Η ΔΗΜΟΣΙΑ ΔΙΑΒΟΥΛΕΥΣΗ ΚΛΕΙΝΕΙ 24 ΙΟΥΝΙΟΥ 2026 | <span id="days-left">10</span> ΗΜΕΡΕΣ ΑΠΟΜΕΝΟΥΝ</span>
+    <span class="en">&#x23F0;&nbsp; PUBLIC CONSULTATION CLOSES JUNE 24, 2026 | <span id="days-left-en">10</span> DAYS LEFT</span>
   </div>
 
   <header>
-    <h1>Save Zavitsa &amp; Mount Parnon</h1>
-    <p class="subhead">A UNESCO Biosphere Reserve is being blasted for industrial wind farms. The karst aquifer feeding 50,000 acres of farmland is at risk. Two deadlines are running now.</p>
-    <span class="not-against">We support renewable energy. We oppose the destruction of a UNESCO Biosphere Reserve for power that serves export markets, not local communities.</span>
+    <h1>
+      <span class="gr">Σώστε τον Ζαβίτσα &amp; τον Πάρνωνα</span>
+      <span class="en">Save Zavitsa &amp; Mount Parnon</span>
+    </h1>
+    <p class="subhead">
+      <span class="gr">Αποθεματικό Βιόσφαιρας UNESCO βάλλεται από βιομηχανικά αιολικά πάρκα. Ο καρστικός υδροφόρος που αρδεύει 200.000 στρέμματα κινδυνεύει. Δύο προθεσμίες τρέχουν τώρα.</span>
+      <span class="en">A UNESCO Biosphere Reserve is being blasted for industrial wind farms. The karst aquifer feeding 50,000 acres of farmland is at risk. Two deadlines are running now.</span>
+    </p>
+    <span class="not-against">
+      <span class="gr">Υποστηρίζουμε τις ανανεώσιμες πηγές ενέργειας. Αντιτιθέμεθα στην καταστροφή Αποθεματικού Βιόσφαιρας UNESCO για ρεύμα που εξάγεται, χωρίς να ωφελεί τις τοπικές κοινότητες.</span>
+      <span class="en">We support renewable energy. We oppose the destruction of a UNESCO Biosphere Reserve for power that serves export markets, not local communities.</span>
+    </span>
   </header>
 
   <main>
 
     <!-- WHY IT MATTERS -->
     <div class="why-matters">
-      <div class="section-label">Why This Matters</div>
+      <div class="section-label">
+        <span class="gr">Γιατί έχει σημασία</span>
+        <span class="en">Why This Matters</span>
+      </div>
       <ul>
-        <li><strong>The water.</strong> Mount Zavitsa is karst limestone. Rain disappears into it, travels 190 hours underground through fractures and sinkholes, and surfaces as the Anavalos springs that irrigate 50,000 acres of citrus and olive groves. Blasting the ridge for turbine foundations shatters that underground network. When freshwater pressure drops in a coastal karst aquifer, seawater fills the void. The wells go saline.</li>
-        <li><strong>The permit trick.</strong> One project split across two municipalities to prevent a unified environmental review of a single ecosystem. A University of Ioannina study showed turbines could achieve 96% efficiency on lower terrain. Developers chose the pristine peaks anyway. Public land in Natura 2000 zones is cheaper. On May 25, twelve communities voted against. Today's march is that vote made in person.</li>
-        <li><strong>Two deadlines, right now.</strong> Greece's public consultation on new renewable energy planning closes June 24. Licensed projects are exempt from the new 1,200m prohibition, but your submission becomes a permanent legal record in Brussels. Greece must also file a full UNESCO Management Plan for the 516,412-hectare Parnon Biosphere Reserve by September 30, 2027. Developers are racing to beat both.</li>
+        <li>
+          <div class="gr"><strong>Το νερό.</strong> Ο Ζαβίτσας είναι καρστικός ασβεστόλιθος. Η βροχή εξαφανίζεται μέσα του, ταξιδεύει 190 ώρες υπόγεια και αναδύεται στις πηγές Αναβάλου που αρδεύουν 200.000 στρέμματα εσπεριδοειδών και ελαιώνων. Η ανατίναξη της κορυφογραμμής για θεμέλια ανεμογεννητριών συντρίβει αυτό το δίκτυο. Όταν πέσει η πίεση του γλυκού νερού σε παράκτιο καρστικό υδροφόρο, η θάλασσα καταλαμβάνει το κενό. Τα πηγάδια γίνονται αλμυρά. Η πεδιάδα σταματά να παράγει.</div>
+          <div class="en"><strong>The water.</strong> Mount Zavitsa is karst limestone. Rain disappears into it, travels 190 hours underground through fractures and sinkholes, and surfaces as the Anavalos springs that irrigate 50,000 acres of citrus and olive groves. Blasting the ridge for turbine foundations shatters that underground network. When freshwater pressure drops in a coastal karst aquifer, seawater fills the void. The wells go saline.</div>
+        </li>
+        <li>
+          <div class="gr"><strong>Το τέχνασμα.</strong> Ένα έργο χωρίστηκε σε δύο δήμους για να αποφευχθεί ενιαία περιβαλλοντική αξιολόγηση. Έρευνα Πανεπιστημίου Ιωαννίνων έδειξε ότι σε χαμηλότερο έδαφος η αποδοτικότητα μειώνεται μόνο 4%. Οι κατασκευαστές επέλεξαν τις παρθένες κορυφές. Η δημόσια γη σε ζώνες Natura 2000 είναι φθηνότερη. Στις 25 Μαΐου, δώδεκα κοινότητες ψήφισαν κατά.</div>
+          <div class="en"><strong>The permit trick.</strong> One project split across two municipalities to prevent a unified environmental review. A University of Ioannina study showed turbines could achieve 96% efficiency on lower terrain. Developers chose the pristine peaks anyway. Public land in Natura 2000 zones is cheaper. On May 25, twelve communities voted against.</div>
+        </li>
+        <li>
+          <div class="gr"><strong>Δύο προθεσμίες, τώρα.</strong> Η δημόσια διαβούλευση για νέο χωροταξικό πλαίσιο ΑΠΕ κλείνει 24 Ιουνίου. Τα αδειοδοτημένα έργα εξαιρούνται, αλλά η υποβολή σας γίνεται μόνιμο νομικό αρχείο στις Βρυξέλλες. Επίσης, η Ελλάδα πρέπει να υποβάλει πλήρες Σχέδιο Διαχείρισης UNESCO για τον Πάρνωνα έως 30 Σεπτεμβρίου 2027. Οι κατασκευαστές τρέχουν να προλάβουν και τις δύο.</div>
+          <div class="en"><strong>Two deadlines, right now.</strong> Greece's public consultation on new renewable energy planning closes June 24. Licensed projects are exempt from the new 1,200m prohibition, but your submission becomes a permanent legal record in Brussels. Greece must also file a full UNESCO Management Plan for the 516,412-hectare Parnon Biosphere Reserve by September 30, 2027. Developers are racing to beat both.</div>
+        </li>
       </ul>
     </div>
 
-    <!-- ACTION 1: PRIMARY -->
+    <!-- ACTION 1 -->
     <div class="action-primary">
-      <h2>Action 1: Send Your Objection to the EU</h2>
-      <p class="action-desc">A pre-written, legally grounded objection citing the Water Framework Directive and Habitats Directive. Sends to the EU Commission, EU Parliament petitions committee, the Greek Ministry of Environment, and both Kynouria municipalities simultaneously.</p>
-
-      <a class="btn-primary" href="mailto:env-water@ec.europa.eu,env-info@ec.europa.eu,peti-secretariat@europarl.europa.eu,secmin@ypen.gr,ggenvr@ypen.gr,info@boriakinouria.gov.gr,info@notiakynouria.gov.gr?subject=URGENT%3A%20Objection%3A%20Industrial%20Wind%20Parks%20on%20Mount%20Zavitsa%20and%20Parnon%20(Kynouria%2C%20Greece)&body=To%20the%20European%20Commission%2C%20the%20EU%20Parliament%20Petitions%20Committee%2C%20the%20Greek%20Ministry%20of%20Environment%2C%20and%20the%20Municipalities%20of%20North%20and%20South%20Kynouria%2C%0D%0A%0D%0AI%20am%20writing%20to%20formally%20object%20to%20the%20proposed%20industrial%20wind%20installations%20on%20Mount%20Zavitsa%20(North%20Kynouria)%20and%20the%20Kosmas%2FParnon%20ridge%20(South%20Kynouria)%20in%20Eastern%20Arcadia%2C%20Greece.%0D%0A%0D%0AThese%20projects%20cannot%20be%20evaluated%20in%20isolation.%20They%20represent%20a%20coordinated%20industrialisation%20of%20a%20single%2C%20interconnected%20ecosystem%3A%0D%0A%0D%0A1.%20ZAVITSA%3A%20WATER%20SECURITY%20THREAT%3A%20Mount%20Zavitsa%20sits%20within%20the%20Parnon%20karst%20limestone%20system%2C%20which%20functions%20as%20a%20primary%20recharge%20zone%20for%20coastal%20aquifers%20including%20the%20Anavalos%20submarine%20spring%20(ancient%20Dini)%20at%20Kiveri.%20This%20spring%20irrigates%20over%20200%2C000%20stremmata%20(50%2C000%20acres)%20of%20citrus%20and%20olive%20groves%20on%20the%20Thyrean%20and%20Argive%20plains.%20Dye-tracing%20experiments%20have%20confirmed%20a%20190-hour%20underground%20connection%20between%20the%20Arcadian%20plateau%20sinkholes%20and%20the%20Kiveri%20springs.%20Blasting%20and%20concreting%20the%20ridge%20for%20turbine%20foundations%20will%20shatter%20the%20fracture%20network%20feeding%20this%20system%2C%20risking%20saltwater%20intrusion%20into%20the%20coastal%20aquifer.%20This%20is%20a%20direct%20concern%20under%20EU%20Water%20Framework%20Directive%202000%2F60%2FEC.%0D%0A%0D%0A2.%20PARNON%2FKOSMAS%3A%20PROTECTED%20AREA%20VIOLATION%3A%20Construction%20roads%20and%20turbine%20installations%20are%20being%20advanced%20inside%20territory%20designated%20as%20the%20UNESCO%20Parnon%20Biosphere%20Reserve%20(September%202025%2C%20Hangzhou).%20The%20permit%20process%20deliberately%20split%20a%20single%20ecological%20project%20across%20two%20municipalities%20to%20circumvent%20unified%20environmental%20review.%0D%0A%0D%0A3.%20COMMUNITY%20OPPOSITION%3A%20On%2025%20May%202026%2C%20the%20North%20Kynouria%20Municipal%20Council%2C%20with%20representatives%20from%20twelve%20communities%2C%20voted%20unanimously%20against%20the%20Zavitsa%20installation.%20Local%20democratic%20opposition%20has%20been%20systematically%20overridden%20by%20national%20licensing%20authorities.%0D%0A%0D%0A4.%20UNDISCLOSED%20BATTERY%20STORAGE%3A%20The%20declared%20project%20includes%20a%20substation%20at%20Kato%20Vervena%2C%20yet%20land%20acquisitions%20around%20it%20far%20exceed%20the%20declared%20footprint%2C%20raising%20serious%20concerns%20about%20undisclosed%20battery%20storage%20plans%20that%20would%20require%20a%20separate%20environmental%20impact%20assessment.%0D%0A%0D%0AI%20call%20for%3A%0D%0A-%20Immediate%20suspension%20of%20all%20environmental%20approvals%20for%20both%20projects%0D%0A-%20A%20full%2C%20independent%20hydrogeological%20impact%20assessment%20for%20the%20Parnon%20karst%20system%0D%0A-%20A%20unified%20environmental%20review%20of%20both%20projects%20as%20a%20single%20ecological%20intervention%0D%0A-%20Compliance%20audit%20against%20EU%20Water%20Framework%20Directive%202000%2F60%2FEC%20and%20Habitats%20Directive%2092%2F43%2FEEC%0D%0A%0D%0AYours%20sincerely%2C%0D%0A%0D%0A%5BYour%20Name%5D%0D%0A%5BCity%2C%20Country%5D">
-        &#x2709;&#xFE0F;&nbsp; SEND YOUR OBJECTION NOW
+      <h2>
+        <span class="gr">Ενέργεια 1: Στείλτε την Ένστασή σας στην ΕΕ</span>
+        <span class="en">Action 1: Send Your Objection to the EU</span>
+      </h2>
+      <p class="action-desc">
+        <span class="gr">Προδιαμορφωμένη, νομικά τεκμηριωμένη ένσταση που επικαλείται την Οδηγία Πλαίσιο για τα Ύδατα και την Οδηγία Οικοτόπων. Αποστολή σε Ευρωπαϊκή Επιτροπή, Ευρωπαϊκό Κοινοβούλιο, Υπουργείο Περιβάλλοντος και τους δύο δήμους Κυνουρίας ταυτόχρονα.</span>
+        <span class="en">A pre-written, legally grounded objection citing the Water Framework Directive and Habitats Directive. Sends to the EU Commission, EU Parliament petitions committee, the Greek Ministry of Environment, and both Kynouria municipalities simultaneously.</span>
+      </p>
+      <a class="btn-primary" href="mailto:env-water@ec.europa.eu,env-info@ec.europa.eu,peti-secretariat@europarl.europa.eu,secmin@ypen.gr,ggenvr@ypen.gr,info@boriakinouria.gov.gr,info@notiakynouria.gov.gr?subject=%CE%95%CE%A0%CE%95%CE%99%CE%93%CE%9F%CE%9D%3A%20%CE%88%CE%BD%CF%83%CF%84%CE%B1%CF%83%CE%B7%3A%20%CE%91%CE%B9%CE%BF%CE%BB%CE%B9%CE%BA%CE%AC%20%CF%83%CF%84%CE%BF%CE%BD%20%CE%96%CE%B1%CE%B2%CE%AF%CF%84%CF%83%CE%B1%20%CE%BA%CE%B1%CE%B9%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%2F%20URGENT%3A%20Objection%3A%20Industrial%20Wind%20Parks%20on%20Mount%20Zavitsa%20and%20Parnon%20%28Kynouria%2C%20Greece%29&body=%CE%A0%CF%81%CE%BF%CF%82%20%CF%84%CE%B7%CE%BD%20%CE%95%CF%85%CF%81%CF%89%CF%80%CE%B1%CF%8A%CE%BA%CE%AE%20%CE%95%CF%80%CE%B9%CF%84%CF%81%CE%BF%CF%80%CE%AE%2C%20%CF%84%CE%B7%CE%BD%20%CE%95%CF%80%CE%B9%CF%84%CF%81%CE%BF%CF%80%CE%AE%20%CE%91%CE%BD%CE%B1%CF%86%CE%BF%CF%81%CF%8E%CE%BD%20%CF%84%CE%BF%CF%85%20%CE%95%CF%85%CF%81%CF%89%CF%80%CE%B1%CF%8A%CE%BA%CE%BF%CF%8D%20%CE%9A%CE%BF%CE%B9%CE%BD%CE%BF%CE%B2%CE%BF%CF%85%CE%BB%CE%AF%CE%BF%CF%85%2C%20%CF%84%CE%BF%20%CE%A5%CF%80%CE%BF%CF%85%CF%81%CE%B3%CE%B5%CE%AF%CE%BF%20%CE%A0%CE%B5%CF%81%CE%B9%CE%B2%CE%AC%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%BF%CF%82%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%BF%CF%85%CF%82%20%CE%94%CE%AE%CE%BC%CE%BF%CF%85%CF%82%20%CE%92%CF%8C%CF%81%CE%B5%CE%B9%CE%B1%CF%82%20%CE%BA%CE%B1%CE%B9%20%CE%9D%CF%8C%CF%84%CE%B9%CE%B1%CF%82%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%CF%82%2C%0A%0A%CE%A3%CE%B1%CF%82%20%CE%B3%CF%81%CE%AC%CF%86%CF%89%20%CE%B3%CE%B9%CE%B1%20%CE%BD%CE%B1%20%CE%B5%CE%BA%CF%86%CF%81%CE%AC%CF%83%CF%89%20%CE%B5%CF%80%CE%AF%CF%83%CE%B7%CE%BC%CE%B7%20%CE%AD%CE%BD%CF%83%CF%84%CE%B1%CF%83%CE%B7%20%CE%BA%CE%B1%CF%84%CE%AC%20%CF%84%CF%89%CE%BD%20%CF%80%CF%81%CE%BF%CF%84%CE%B5%CE%B9%CE%BD%CF%8C%CE%BC%CE%B5%CE%BD%CF%89%CE%BD%20%CE%B2%CE%B9%CE%BF%CE%BC%CE%B7%CF%87%CE%B1%CE%BD%CE%B9%CE%BA%CF%8E%CE%BD%20%CE%B1%CE%B9%CE%BF%CE%BB%CE%B9%CE%BA%CF%8E%CE%BD%20%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CF%84%CE%AC%CF%83%CE%B5%CF%89%CE%BD%20%CF%83%CF%84%CE%BF%CE%BD%20%CE%96%CE%B1%CE%B2%CE%AF%CF%84%CF%83%CE%B1%20%28%CE%92%CF%8C%CF%81%CE%B5%CE%B9%CE%B1%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%29%20%CE%BA%CE%B1%CE%B9%20%CF%83%CF%84%CE%B7%CE%BD%20%CE%BA%CE%BF%CF%81%CF%85%CF%86%CE%BF%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%AE%20%CE%9A%CE%BF%CF%83%CE%BC%CE%AC%2F%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%28%CE%9D%CF%8C%CF%84%CE%B9%CE%B1%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%29%20%CF%83%CF%84%CE%B7%CE%BD%20%CE%91%CE%BD%CE%B1%CF%84%CE%BF%CE%BB%CE%B9%CE%BA%CE%AE%20%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%AF%CE%B1%2C%20%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1.%0A%0A1.%20%CE%96%CE%91%CE%92%CE%99%CE%A4%CE%A3%CE%91%CE%A3%3A%20%CE%91%CE%A0%CE%95%CE%99%CE%9B%CE%97%20%CE%93%CE%99%CE%91%20%CE%A4%CE%9F%20%CE%9D%CE%95%CE%A1%CE%9F%3A%20%CE%9F%20%CE%96%CE%B1%CE%B2%CE%AF%CF%84%CF%83%CE%B1%CF%82%20%CE%B2%CF%81%CE%AF%CF%83%CE%BA%CE%B5%CF%84%CE%B1%CE%B9%20%CE%B5%CE%BD%CF%84%CF%8C%CF%82%20%CF%84%CE%BF%CF%85%20%CE%BA%CE%B1%CF%81%CF%83%CF%84%CE%B9%CE%BA%CE%BF%CF%8D%20%CF%83%CF%85%CF%83%CF%84%CE%AE%CE%BC%CE%B1%CF%84%CE%BF%CF%82%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1.%20%CE%A0%CE%B5%CE%B9%CF%81%CE%AC%CE%BC%CE%B1%CF%84%CE%B1%20%CE%B9%CF%87%CE%BD%CE%B7%CE%B8%CE%AD%CF%84%CE%B7%CF%83%CE%B7%CF%82%20%CE%B5%CF%80%CE%B9%CE%B2%CE%B5%CE%B2%CE%B1%CE%AF%CF%89%CF%83%CE%B1%CE%BD%20190%20%CF%89%CF%81%CF%8E%CE%BD%20%CF%85%CF%80%CF%8C%CE%B3%CE%B5%CE%B9%CE%B1%20%CF%83%CF%8D%CE%BD%CE%B4%CE%B5%CF%83%CE%B7%20%CE%BC%CE%B5%CF%84%CE%B1%CE%BE%CF%8B%20%CE%BA%CE%B1%CF%84%CE%B1%CE%B2%CE%BF%CE%B8%CF%81%CF%8E%CE%BD%20%CF%84%CE%BF%CF%85%20%CE%91%CF%81%CE%BA%CE%B1%CE%B4%CE%B9%CE%BA%CE%BF%CF%8D%20%CE%BF%CF%81%CE%BF%CF%80%CE%B5%CE%B4%CE%AF%CE%BF%CF%85%20%CE%BA%CE%B1%CE%B9%20%CF%84%CF%89%CE%BD%20%CF%80%CE%B7%CE%B3%CF%8E%CE%BD%20%CE%91%CE%BD%CE%B1%CE%B2%CE%AC%CE%BB%CE%BF%CF%85%20%28%CE%B1%CF%81%CF%87%CE%B1%CE%AF%CE%B1%20%CE%94%CE%AF%CE%BD%CE%B7%29%20%CF%83%CF%84%CE%BF%20%CE%9A%CE%B9%CE%B2%CE%AD%CF%81%CE%B9%2C%20%CF%80%CE%BF%CF%85%20%CE%B1%CF%81%CE%B4%CE%B5%CF%8D%CE%BF%CF%85%CE%BD%20%CF%80%CE%AC%CE%BD%CF%89%20%CE%B1%CF%80%CF%8C%20200.000%20%CF%83%CF%84%CF%81%CE%AD%CE%BC%CE%BC%CE%B1%CF%84%CE%B1%20%CE%B5%CF%83%CF%80%CE%B5%CF%81%CE%B9%CE%B4%CE%BF%CE%B5%CE%B9%CE%B4%CF%8E%CE%BD%20%CE%BA%CE%B1%CE%B9%20%CE%B5%CE%BB%CE%B1%CE%B9%CF%8E%CE%BD%CF%89%CE%BD.%20%CE%97%20%CE%B1%CE%BD%CE%B1%CF%84%CE%AF%CE%BD%CE%B1%CE%BE%CE%B7%20%CE%B3%CE%B9%CE%B1%20%CE%B8%CE%B5%CE%BC%CE%AD%CE%BB%CE%B9%CE%B1%20%CE%B1%CE%BD%CE%B5%CE%BC%CE%BF%CE%B3%CE%B5%CE%BD%CE%BD%CE%B7%CF%84%CF%81%CE%B9%CF%8E%CE%BD%20%CE%B8%CE%B1%20%CE%B4%CE%B9%CE%B1%CF%83%CF%80%CE%AC%CF%83%CE%B5%CE%B9%20%CF%84%CE%BF%20%CE%B4%CE%AF%CE%BA%CF%84%CF%85%CE%BF%20%CF%81%CE%B7%CE%B3%CE%BC%CE%AC%CF%84%CF%89%CE%BD%20%CE%BA%CE%B1%CE%B9%20%CE%B8%CE%B1%20%CE%B4%CE%B7%CE%BC%CE%B9%CE%BF%CF%85%CF%81%CE%B3%CE%AE%CF%83%CE%B5%CE%B9%20%CE%BA%CE%AF%CE%BD%CE%B4%CF%85%CE%BD%CE%BF%20%CE%B1%CE%BB%CE%B1%CF%84%CE%BF%CF%8D%CF%87%CE%B1%CF%82%20%CE%B4%CE%B9%CE%B5%CE%AF%CF%83%CE%B4%CF%85%CF%83%CE%B7%CF%82.%20%CE%86%CE%BC%CE%B5%CF%83%CE%BF%20%CE%B6%CE%AE%CF%84%CE%B7%CE%BC%CE%B1%20%CE%B4%CF%85%CE%BD%CE%AC%CE%BC%CE%B5%CE%B9%20%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B1%CF%82%20%CE%A0%CE%BB%CE%B1%CE%AF%CF%83%CE%B9%CE%BF%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%B1%20%CE%8E%CE%B4%CE%B1%CF%84%CE%B1%202000%2F60%2F%CE%95%CE%9A.%0A%0A2.%20%CE%A0%CE%91%CE%A1%CE%9D%CE%A9%CE%9D%CE%91%CE%A3%2F%CE%9A%CE%9F%CE%A3%CE%9C%CE%91%CE%A3%3A%20%CE%A0%CE%91%CE%A1%CE%91%CE%92%CE%99%CE%91%CE%A3%CE%97%20%CE%A0%CE%A1%CE%9F%CE%A3%CE%A4%CE%91%CE%A4%CE%95%CE%A5%CE%9F%CE%9C%CE%95%CE%9D%CE%97%CE%A3%20%CE%A0%CE%95%CE%A1%CE%99%CE%9F%CE%A7%CE%97%CE%A3%3A%20%CE%95%CE%B3%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CF%84%CE%AC%CF%83%CE%B5%CE%B9%CF%82%20%CF%80%CF%81%CE%BF%CF%89%CE%B8%CE%BF%CF%8D%CE%BD%CF%84%CE%B1%CE%B9%20%CE%B5%CE%BD%CF%84%CF%8C%CF%82%20%CE%91%CF%80%CE%BF%CE%B8%CE%B5%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%BF%CF%8D%20%CE%92%CE%B9%CF%8C%CF%83%CF%86%CE%B1%CE%B9%CF%81%CE%B1%CF%82%20UNESCO%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%28%CE%A3%CE%B5%CF%80%CF%84%CE%AD%CE%BC%CE%B2%CF%81%CE%B9%CE%BF%CF%82%202025%2C%20%CE%A7%CE%B1%CE%BD%CE%B3%CE%BA%CF%84%CE%B6%CF%8C%CE%BF%CF%85%29.%20%CE%97%20%CE%B1%CE%B4%CE%B5%CE%B9%CE%BF%CE%B4%CF%8C%CF%84%CE%B7%CF%83%CE%B7%20%CF%87%CF%8E%CF%81%CE%B9%CF%83%CE%B5%20%CF%83%CE%BA%CF%8C%CF%80%CE%B9%CE%BC%CE%B1%20%CE%AD%CE%BD%CE%B1%20%CE%B5%CE%BD%CE%B9%CE%B1%CE%AF%CE%BF%20%CE%BF%CE%B9%CE%BA%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CF%8C%20%CE%AD%CF%81%CE%B3%CE%BF%20%CF%83%CE%B5%20%CE%B4%CF%8D%CE%BF%20%CE%B4%CE%AE%CE%BC%CE%BF%CF%85%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%80%CE%B1%CF%81%CE%AC%CE%BA%CE%B1%CE%BC%CF%88%CE%B7%20%CE%B5%CE%BD%CE%B9%CE%B1%CE%AF%CE%B1%CF%82%20%CF%80%CE%B5%CF%81%CE%B9%CE%B2%CE%B1%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%B9%CE%BA%CE%AE%CF%82%20%CE%B1%CE%BE%CE%B9%CE%BF%CE%BB%CF%8C%CE%B3%CE%B7%CF%83%CE%B7%CF%82.%0A%0A3.%20%CE%9A%CE%9F%CE%99%CE%9D%CE%9F%CE%A4%CE%99%CE%9A%CE%97%20%CE%91%CE%9D%CE%A4%CE%99%CE%98%CE%95%CE%A3%CE%97%3A%20%CE%A3%CF%84%CE%B9%CF%82%2025%20%CE%9C%CE%B1%CE%90%CE%BF%CF%85%202026%2C%20%CF%84%CE%BF%20%CE%94%CE%B7%CE%BC%CE%BF%CF%84%CE%B9%CE%BA%CF%8C%20%CE%A3%CF%85%CE%BC%CE%B2%CE%BF%CF%8D%CE%BB%CE%B9%CE%BF%20%CE%92%CF%8C%CF%81%CE%B5%CE%B9%CE%B1%CF%82%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%CF%82%20%CF%88%CE%AE%CF%86%CE%B9%CF%83%CE%B5%20%CE%BF%CE%BC%CF%8C%CF%86%CF%89%CE%BD%CE%B1%20%CE%BA%CE%B1%CF%84%CE%AC%2C%20%CE%BC%CE%B5%20%CE%B5%CE%BA%CF%80%CF%81%CE%BF%CF%83%CF%8E%CF%80%CE%BF%CF%85%CF%82%20%CE%B1%CF%80%CF%8C%20%CE%B4%CF%8E%CE%B4%CE%B5%CE%BA%CE%B1%20%CE%BA%CE%BF%CE%B9%CE%BD%CF%8C%CF%84%CE%B7%CF%84%CE%B5%CF%82.%0A%0A4.%20%CE%91%CE%94%CE%97%CE%9B%CE%A9%CE%A4%CE%97%20%CE%91%CE%A0%CE%9F%CE%98%CE%97%CE%9A%CE%95%CE%A5%CE%A3%CE%97%20%CE%95%CE%9D%CE%95%CE%A1%CE%93%CE%95%CE%99%CE%91%CE%A3%3A%20%CE%91%CE%B3%CE%BF%CF%81%CE%AD%CF%82%20%CE%B3%CE%B7%CF%82%20%CE%B3%CF%8D%CF%81%CF%89%20%CE%B1%CF%80%CF%8C%20%CF%84%CE%BF%CE%BD%20%CF%85%CF%80%CE%BF%CF%83%CF%84%CE%B1%CE%B8%CE%BC%CF%8C%20%CF%83%CF%84%CE%BF%20%CE%9A%CE%AC%CF%84%CF%89%20%CE%92%CE%AD%CF%81%CE%B2%CE%B5%CE%BD%CE%BF%20%CF%85%CF%80%CE%B5%CF%81%CE%B2%CE%B1%CE%AF%CE%BD%CE%BF%CF%85%CE%BD%20%CF%80%CE%BF%CE%BB%CF%8D%20%CF%84%CE%BF%20%CE%B4%CE%B7%CE%BB%CF%89%CE%B8%CE%AD%CE%BD%20%CE%B1%CF%80%CE%BF%CF%84%CF%8D%CF%80%CF%89%CE%BC%CE%B1%2C%20%CE%B5%CE%B3%CE%B5%CE%AF%CF%81%CE%BF%CE%BD%CF%84%CE%B1%CF%82%20%CE%B1%CE%BD%CE%B7%CF%83%CF%85%CF%87%CE%AF%CE%B5%CF%82%20%CE%B3%CE%B9%CE%B1%20%CE%B1%CE%B4%CE%AE%CE%BB%CF%89%CF%84%CE%B7%20%CE%B1%CF%80%CE%BF%CE%B8%CE%AE%CE%BA%CE%B5%CF%85%CF%83%CE%B7%20%CE%BC%CF%80%CE%B1%CF%84%CE%B1%CF%81%CE%B9%CF%8E%CE%BD%20%CF%80%CE%BF%CF%85%20%CE%B8%CE%B1%20%CE%B1%CF%80%CE%B1%CE%B9%CF%84%CE%BF%CF%8D%CF%83%CE%B5%20%CF%87%CF%89%CF%81%CE%B9%CF%83%CF%84%CE%AE%20%CE%9C%CE%A0%CE%95.%0A%0A%CE%96%CE%B7%CF%84%CF%8E%3A%0A-%20%CE%86%CE%BC%CE%B5%CF%83%CE%B7%20%CE%B1%CE%BD%CE%B1%CF%83%CF%84%CE%BF%CE%BB%CE%AE%20%CF%8C%CE%BB%CF%89%CE%BD%20%CF%84%CF%89%CE%BD%20%CF%80%CE%B5%CF%81%CE%B9%CE%B2%CE%B1%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%B9%CE%BA%CF%8E%CE%BD%20%CE%B5%CE%B3%CE%BA%CF%81%CE%AF%CF%83%CE%B5%CF%89%CE%BD%20%CE%BA%CE%B1%CE%B9%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%B1%20%CE%B4%CF%8D%CE%BF%20%CE%AD%CF%81%CE%B3%CE%B1%0A-%20%CE%A0%CE%BB%CE%AE%CF%81%CE%B7%2C%20%CE%B1%CE%BD%CE%B5%CE%BE%CE%AC%CF%81%CF%84%CE%B7%CF%84%CE%B7%20%CF%85%CE%B4%CF%81%CE%BF%CE%B3%CE%B5%CF%89%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%20%CE%B5%CE%BA%CF%84%CE%AF%CE%BC%CE%B7%CF%83%CE%B7%20%CE%B5%CF%80%CE%B9%CF%80%CF%84%CF%8E%CF%83%CE%B5%CF%89%CE%BD%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%BF%20%CE%BA%CE%B1%CF%81%CF%83%CF%84%CE%B9%CE%BA%CF%8C%20%CF%83%CF%8D%CF%83%CF%84%CE%B7%CE%BC%CE%B1%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%0A-%20%CE%95%CE%BD%CE%B9%CE%B1%CE%AF%CE%B1%20%CF%80%CE%B5%CF%81%CE%B9%CE%B2%CE%B1%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%B9%CE%BA%CE%AE%20%CE%B1%CE%BE%CE%B9%CE%BF%CE%BB%CF%8C%CE%B3%CE%B7%CF%83%CE%B7%20%CE%BA%CE%B1%CE%B9%20%CF%84%CF%89%CE%BD%20%CE%B4%CF%8D%CE%BF%20%CE%AD%CF%81%CE%B3%CF%89%CE%BD%20%CF%89%CF%82%20%CE%BC%CE%AF%CE%B1%CF%82%20%CE%BF%CE%B9%CE%BA%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%CF%82%20%CF%80%CE%B1%CF%81%CE%AD%CE%BC%CE%B2%CE%B1%CF%83%CE%B7%CF%82%0A-%20%CE%88%CE%BB%CE%B5%CE%B3%CF%87%CE%BF%CF%82%20%CF%83%CF%85%CE%BC%CE%BC%CF%8C%CF%81%CF%86%CF%89%CF%83%CE%B7%CF%82%20%CE%BC%CE%B5%20%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B1%202000%2F60%2F%CE%95%CE%9A%20%CE%BA%CE%B1%CE%B9%20%CE%9F%CE%B4%CE%B7%CE%B3%CE%AF%CE%B1%20%CE%9F%CE%B9%CE%BA%CE%BF%CF%84%CF%8C%CF%80%CF%89%CE%BD%2092%2F43%2F%CE%95%CE%9F%CE%9A%0A%0A%CE%9C%CE%B5%20%CE%B5%CE%BA%CF%84%CE%AF%CE%BC%CE%B7%CF%83%CE%B7%2C%0A%0A%5B%CE%A4%CE%BF%20%CE%8C%CE%BD%CE%BF%CE%BC%CE%AC%20%CF%83%CE%B1%CF%82%5D%0A%5B%CE%A0%CF%8C%CE%BB%CE%B7%2C%20%CE%A7%CF%8E%CF%81%CE%B1%5D%0A%0A---%0A%0ATo%20the%20European%20Commission%2C%20the%20EU%20Parliament%20Petitions%20Committee%2C%20the%20Greek%20Ministry%20of%20Environment%2C%20and%20the%20Municipalities%20of%20North%20and%20South%20Kynouria%2C%0A%0AI%20am%20writing%20to%20formally%20object%20to%20the%20proposed%20industrial%20wind%20installations%20on%20Mount%20Zavitsa%20%28North%20Kynouria%29%20and%20the%20Kosmas%2FParnon%20ridge%20%28South%20Kynouria%29%20in%20Eastern%20Arcadia%2C%20Greece.%0A%0A1.%20ZAVITSA%3A%20WATER%20SECURITY%20THREAT%3A%20Mount%20Zavitsa%20sits%20within%20the%20Parnon%20karst%20limestone%20system.%20Dye-tracing%20experiments%20confirmed%20a%20190-hour%20underground%20connection%20between%20the%20Arcadian%20plateau%20sinkholes%20and%20the%20Anavalos%20springs%20%28ancient%20Dini%29%20at%20Kiveri%2C%20irrigating%20over%20200%2C000%20stremmata%20%2850%2C000%20acres%29%20of%20citrus%20and%20olive%20groves.%20Blasting%20for%20turbine%20foundations%20will%20shatter%20the%20fracture%20network%2C%20risking%20saltwater%20intrusion%20into%20the%20coastal%20aquifer.%20Direct%20concern%20under%20EU%20Water%20Framework%20Directive%202000%2F60%2FEC.%0A%0A2.%20PARNON%2FKOSMAS%3A%20PROTECTED%20AREA%20VIOLATION%3A%20Installations%20are%20being%20advanced%20inside%20the%20UNESCO%20Parnon%20Biosphere%20Reserve%20%28September%202025%2C%20Hangzhou%29.%20The%20permit%20process%20deliberately%20split%20a%20single%20ecological%20project%20across%20two%20municipalities%20to%20circumvent%20unified%20environmental%20review.%0A%0A3.%20COMMUNITY%20OPPOSITION%3A%20On%2025%20May%202026%2C%20the%20North%20Kynouria%20Municipal%20Council%20voted%20unanimously%20against%20the%20Zavitsa%20installation%2C%20with%20representatives%20from%20twelve%20communities.%0A%0A4.%20UNDISCLOSED%20BATTERY%20STORAGE%3A%20Land%20purchases%20around%20the%20Kato%20Vervena%20substation%20far%20exceed%20the%20declared%20footprint%2C%20raising%20concerns%20about%20undisclosed%20battery%20storage%20requiring%20a%20separate%20EIA.%0A%0AI%20call%20for%3A%0A-%20Immediate%20suspension%20of%20all%20environmental%20approvals%20for%20both%20projects%0A-%20A%20full%2C%20independent%20hydrogeological%20impact%20assessment%20for%20the%20Parnon%20karst%20system%0A-%20A%20unified%20environmental%20review%20of%20both%20projects%20as%20a%20single%20ecological%20intervention%0A-%20Compliance%20audit%20against%20EU%20Water%20Framework%20Directive%202000%2F60%2FEC%20and%20Habitats%20Directive%2092%2F43%2FEEC%0A%0AYours%20sincerely%2C%0A%0A%5BYour%20Name%20%2F%20%CE%A4%CE%BF%20%CE%8C%CE%BD%CE%BF%CE%BC%CE%AC%20%CF%83%CE%B1%CF%82%5D%0A%5BCity%2C%20Country%20%2F%20%CE%A0%CF%8C%CE%BB%CE%B7%2C%20%CE%A7%CF%8E%CF%81%CE%B1%5D">
+        &#x2709;&#xFE0F;&nbsp; <span class="gr">ΣΤΕΙΛΤΕ ΤΗΝ ΕΝΣΤΑΣΗ ΣΑΣ ΤΩΡΑ</span><span class="en">SEND YOUR OBJECTION NOW</span>
       </a>
-
       <div class="how-it-works">
-        Your email app opens with everything pre-filled. Add your name at the bottom. Hit Send. 30 seconds.
+        <span class="gr">Η εφαρμογή email ανοίγει με όλα προσυμπληρωμένα. Προσθέστε το όνομά σας στο τέλος. Πατήστε Αποστολή. 30 δευτερόλεπτα.</span>
+        <span class="en">Your email app opens with everything pre-filled. Add your name at the bottom. Hit Send. 30 seconds.</span>
       </div>
-
       <div class="recipients">
-        EU Commission, Water Directorate &nbsp;&middot;&nbsp;
-        EU Commission, Environment &nbsp;&middot;&nbsp;
-        EU Parliament Petitions Committee &nbsp;&middot;&nbsp;
-        Greek Ministry of Environment (2 addresses) &nbsp;&middot;&nbsp;
-        Municipality of North Kynouria &nbsp;&middot;&nbsp;
-        Municipality of South Kynouria
+        <span class="gr">ΕΕ-Επιτροπή, Διεύθυνση Νερού &nbsp;&middot;&nbsp; ΕΕ-Επιτροπή, Περιβάλλον &nbsp;&middot;&nbsp; Επιτροπή Αναφορών ΕΚ &nbsp;&middot;&nbsp; Υπουργείο Περιβάλλοντος (2 διευθύνσεις) &nbsp;&middot;&nbsp; Δήμος Βόρειας Κυνουρίας &nbsp;&middot;&nbsp; Δήμος Νότιας Κυνουρίας</span>
+        <span class="en">EU Commission, Water Directorate &nbsp;&middot;&nbsp; EU Commission, Environment &nbsp;&middot;&nbsp; EU Parliament Petitions Committee &nbsp;&middot;&nbsp; Greek Ministry of Environment (2 addresses) &nbsp;&middot;&nbsp; Municipality of North Kynouria &nbsp;&middot;&nbsp; Municipality of South Kynouria</span>
       </div>
     </div>
 
-    <!-- ACTION 2: SECONDARY — TIME CRITICAL -->
+    <!-- ACTION 2 -->
     <div class="action-secondary">
-      <h2>Action 2: Public Consultation &nbsp;&#x23F0; Closes June 24</h2>
-      <p class="action-desc">Greece's new renewable energy spatial framework bans wind farms above 1,200m and names Parnon as a protected region. Licensed projects are exempt. Your submission is a permanent legal record that can be cited in court and in Brussels. Closes June 24.</p>
-
-      <a class="btn-secondary" href="mailto:ggenvr@ypen.gr?subject=Public%20Consultation%20Submission%3A%20Spatial%20Planning%20Framework%20for%20RES%20(June%202026)&body=To%20the%20Secretary%20General%2C%20Ministry%20of%20Environment%20and%20Energy%2C%0D%0A%0D%0AI%20am%20submitting%20comments%20on%20the%20new%20Spatial%20Planning%20Framework%20for%20Renewable%20Energy%20Sources%20(consultation%20closing%20June%2024%2C%202026).%0D%0A%0D%0AI%20support%20the%20prohibition%20on%20wind%20farms%20above%201%2C200%20metres%20and%20the%20protection%20of%20named%20mountain%20regions%20including%20Parnon.%20However%2C%20I%20am%20deeply%20concerned%20that%20the%20grandfather%20clause%20exempting%20already-licensed%20projects%20renders%20these%20protections%20meaningless%20for%20Mount%20Zavitsa%20(North%20Kynouria)%20and%20the%20Kosmas%2FParnon%20installations%20(South%20Kynouria)%2C%20both%20of%20which%20fall%20within%20the%20UNESCO%20Parnon%20Biosphere%20Reserve%20designated%20in%20September%202025.%0D%0A%0D%0AI%20urge%20the%20Ministry%20to%3A%0D%0A-%20Apply%20the%201%2C200m%20prohibition%20retroactively%20to%20all%20projects%20not%20yet%20under%20construction%0D%0A-%20Require%20a%20unified%20hydrogeological%20impact%20assessment%20for%20the%20Parnon%20karst%20system%20before%20any%20permits%20are%20finalised%0D%0A-%20Align%20the%20spatial%20framework%20with%20the%20UNESCO%20Management%20Plan%20obligations%20due%20September%2030%2C%202027%0D%0A%0D%0AYours%20sincerely%2C%0D%0A%0D%0A%5BYour%20Name%5D%0D%0A%5BCity%2C%20Country%5D">
-        &#x2709;&#xFE0F;&nbsp; SUBMIT CONSULTATION COMMENT
+      <h2>
+        <span class="gr">Ενέργεια 2: Δημόσια Διαβούλευση &nbsp;&#x23F0; Κλείνει 24 Ιουνίου</span>
+        <span class="en">Action 2: Public Consultation &nbsp;&#x23F0; Closes June 24</span>
+      </h2>
+      <p class="action-desc">
+        <span class="gr">Το νέο χωροταξικό πλαίσιο ΑΠΕ της Ελλάδας απαγορεύει αιολικά πάνω από 1.200μ. και κατονομάζει τον Πάρνωνα ως προστατευόμενη περιοχή. Τα αδειοδοτημένα έργα εξαιρούνται. Η υποβολή σας είναι μόνιμο νομικό αρχείο που μπορεί να χρησιμοποιηθεί σε δικαστήριο και στις Βρυξέλλες. Κλείνει 24 Ιουνίου.</span>
+        <span class="en">Greece's new renewable energy spatial framework bans wind farms above 1,200m and names Parnon as a protected region. Licensed projects are exempt. Your submission is a permanent legal record that can be cited in court and in Brussels. Closes June 24.</span>
+      </p>
+      <a class="btn-secondary" href="mailto:ggenvr@ypen.gr?subject=%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%94%CE%B9%CE%B1%CE%B2%CE%BF%CF%8D%CE%BB%CE%B5%CF%85%CF%83%CE%B7%CF%82%3A%20%CE%A7%CF%89%CF%81%CE%BF%CF%84%CE%B1%CE%BE%CE%B9%CE%BA%CF%8C%20%CE%91%CE%A0%CE%95%20%28%CE%99%CE%BF%CF%8D%CE%BD%CE%B9%CE%BF%CF%82%202026%29%20%2F%20Public%20Consultation%20Submission%3A%20Spatial%20Planning%20Framework%20for%20RES%20%28June%202026%29&body=%CE%A0%CF%81%CE%BF%CF%82%20%CF%84%CE%BF%CE%BD%20%CE%93%CE%B5%CE%BD%CE%B9%CE%BA%CF%8C%20%CE%93%CF%81%CE%B1%CE%BC%CE%BC%CE%B1%CF%84%CE%AD%CE%B1%2C%20%CE%A5%CF%80%CE%BF%CF%85%CF%81%CE%B3%CE%B5%CE%AF%CE%BF%20%CE%A0%CE%B5%CF%81%CE%B9%CE%B2%CE%AC%CE%BB%CE%BB%CE%BF%CE%BD%CF%84%CE%BF%CF%82%20%CE%BA%CE%B1%CE%B9%20%CE%95%CE%BD%CE%AD%CF%81%CE%B3%CE%B5%CE%B9%CE%B1%CF%82%2C%0A%0A%CE%A5%CF%80%CE%BF%CE%B2%CE%AC%CE%BB%CE%BB%CF%89%20%CF%83%CF%87%CF%8C%CE%BB%CE%B9%CE%B1%20%CE%B5%CF%80%CE%AF%20%CF%84%CE%BF%CF%85%20%CE%BD%CE%AD%CE%BF%CF%85%20%CE%95%CE%B9%CE%B4%CE%B9%CE%BA%CE%BF%CF%8D%20%CE%A7%CF%89%CF%81%CE%BF%CF%84%CE%B1%CE%BE%CE%B9%CE%BA%CE%BF%CF%8D%20%CE%A0%CE%BB%CE%B1%CE%B9%CF%83%CE%AF%CE%BF%CF%85%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%B9%CF%82%20%CE%91%CE%BD%CE%B1%CE%BD%CE%B5%CF%8E%CF%83%CE%B9%CE%BC%CE%B5%CF%82%20%CE%A0%CE%B7%CE%B3%CE%AD%CF%82%20%CE%95%CE%BD%CE%AD%CF%81%CE%B3%CE%B5%CE%B9%CE%B1%CF%82%20%28%CE%B4%CE%B9%CE%B1%CE%B2%CE%BF%CF%8D%CE%BB%CE%B5%CF%85%CF%83%CE%B7%20%CE%AD%CF%89%CF%82%2024%20%CE%99%CE%BF%CF%85%CE%BD%CE%AF%CE%BF%CF%85%202026%29.%0A%0A%CE%A5%CF%80%CE%BF%CF%83%CF%84%CE%B7%CF%81%CE%AF%CE%B6%CF%89%20%CF%84%CE%B7%CE%BD%20%CE%B1%CF%80%CE%B1%CE%B3%CF%8C%CF%81%CE%B5%CF%85%CF%83%CE%B7%20%CE%B1%CE%B9%CE%BF%CE%BB%CE%B9%CE%BA%CF%8E%CE%BD%20%CF%80%CE%AC%CF%81%CE%BA%CF%89%CE%BD%20%CF%80%CE%AC%CE%BD%CF%89%20%CE%B1%CF%80%CF%8C%20%CF%84%CE%B1%201.200%20%CE%BC%CE%AD%CF%84%CF%81%CE%B1%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%B7%CE%BD%20%CF%80%CF%81%CE%BF%CF%83%CF%84%CE%B1%CF%83%CE%AF%CE%B1%20%CE%BA%CE%B1%CF%84%CE%BF%CE%BD%CE%BF%CE%BC%CE%B1%CE%B6%CF%8C%CE%BC%CE%B5%CE%BD%CF%89%CE%BD%20%CE%BF%CF%81%CE%B5%CE%B9%CE%BD%CF%8E%CE%BD%20%CF%80%CE%B5%CF%81%CE%B9%CE%BF%CF%87%CF%8E%CE%BD%2C%20%CF%83%CF%85%CE%BC%CF%80%CE%B5%CF%81%CE%B9%CE%BB%CE%B1%CE%BC%CE%B2%CE%B1%CE%BD%CE%BF%CE%BC%CE%AD%CE%BD%CE%BF%CF%85%20%CF%84%CE%BF%CF%85%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1.%20%CE%A9%CF%83%CF%84%CF%8C%CF%83%CE%BF%2C%20%CE%B5%CE%BA%CF%86%CF%81%CE%AC%CE%B6%CF%89%20%CF%83%CE%BF%CE%B2%CE%B1%CF%81%CE%AE%20%CE%B1%CE%BD%CE%B7%CF%83%CF%85%CF%87%CE%AF%CE%B1%20%CF%8C%CF%84%CE%B9%20%CE%B7%20%CF%81%CE%AE%CF%84%CF%81%CE%B1%20%CF%80%CE%B1%CF%80%CF%80%CE%BF%CF%8D%20%CF%80%CE%BF%CF%85%20%CE%B5%CE%BE%CE%B1%CE%B9%CF%81%CE%B5%CE%AF%20%CE%AE%CE%B4%CE%B7%20%CE%B1%CE%B4%CE%B5%CE%B9%CE%BF%CE%B4%CE%BF%CF%84%CE%B7%CE%BC%CE%AD%CE%BD%CE%B1%20%CE%AD%CF%81%CE%B3%CE%B1%20%CE%BA%CE%B1%CE%B8%CE%B9%CF%83%CF%84%CE%AC%20%CE%B1%CF%85%CF%84%CE%AD%CF%82%20%CF%84%CE%B9%CF%82%20%CF%80%CF%81%CE%BF%CF%83%CF%84%CE%B1%CF%83%CE%AF%CE%B5%CF%82%20%CE%BF%CF%85%CF%83%CE%B9%CE%B1%CF%83%CF%84%CE%B9%CE%BA%CE%AC%20%CE%B1%CE%BD%CE%B5%CE%BD%CE%B5%CF%81%CE%B3%CE%AD%CF%82%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%BF%CE%BD%20%CE%96%CE%B1%CE%B2%CE%AF%CF%84%CF%83%CE%B1%20%28%CE%92%CF%8C%CF%81%CE%B5%CE%B9%CE%B1%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%29%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%B9%CF%82%20%CE%B5%CE%B3%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CF%84%CE%AC%CF%83%CE%B5%CE%B9%CF%82%20%CE%9A%CE%BF%CF%83%CE%BC%CE%AC%2F%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%28%CE%9D%CF%8C%CF%84%CE%B9%CE%B1%20%CE%9A%CF%85%CE%BD%CE%BF%CF%85%CF%81%CE%AF%CE%B1%29%2C%20%CE%BA%CE%B1%CE%B9%20%CF%84%CE%B1%20%CE%B4%CF%8D%CE%BF%20%CE%B5%CE%BD%CF%84%CF%8C%CF%82%20%CF%84%CE%BF%CF%85%20%CE%91%CF%80%CE%BF%CE%B8%CE%B5%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%BF%CF%8D%20%CE%92%CE%B9%CF%8C%CF%83%CF%86%CE%B1%CE%B9%CF%81%CE%B1%CF%82%20UNESCO%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%28%CE%A3%CE%B5%CF%80%CF%84%CE%AD%CE%BC%CE%B2%CF%81%CE%B9%CE%BF%CF%82%202025%29.%0A%0A%CE%A0%CE%B1%CF%81%CE%B1%CE%BA%CE%B1%CE%BB%CF%8E%20%CF%84%CE%BF%20%CE%A5%CF%80%CE%BF%CF%85%CF%81%CE%B3%CE%B5%CE%AF%CE%BF%3A%0A-%20%CE%9D%CE%B1%20%CE%B5%CF%86%CE%B1%CF%81%CE%BC%CF%8C%CF%83%CE%B5%CE%B9%20%CF%84%CE%B7%CE%BD%20%CE%B1%CF%80%CE%B1%CE%B3%CF%8C%CF%81%CE%B5%CF%85%CF%83%CE%B7%20%CF%84%CF%89%CE%BD%201.200%CE%BC.%20%CE%B1%CE%BD%CE%B1%CE%B4%CF%81%CE%BF%CE%BC%CE%B9%CE%BA%CE%AC%20%CE%B3%CE%B9%CE%B1%20%CF%8C%CE%BB%CE%B1%20%CF%84%CE%B1%20%CE%AD%CF%81%CE%B3%CE%B1%20%CF%80%CE%BF%CF%85%20%CE%B4%CE%B5%CE%BD%20%CE%B2%CF%81%CE%AF%CF%83%CE%BA%CE%BF%CE%BD%CF%84%CE%B1%CE%B9%20%CE%B1%CE%BA%CF%8C%CE%BC%CE%B7%20%CF%85%CF%80%CF%8C%20%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CE%BA%CE%B5%CF%85%CE%AE%0A-%20%CE%9D%CE%B1%20%CE%B1%CF%80%CE%B1%CE%B9%CF%84%CE%AE%CF%83%CE%B5%CE%B9%20%CE%B5%CE%BD%CE%B9%CE%B1%CE%AF%CE%B1%20%CF%85%CE%B4%CF%81%CE%BF%CE%B3%CE%B5%CF%89%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%AE%20%CE%B5%CE%BA%CF%84%CE%AF%CE%BC%CE%B7%CF%83%CE%B7%20%CE%B5%CF%80%CE%B9%CF%80%CF%84%CF%8E%CF%83%CE%B5%CF%89%CE%BD%20%CE%B3%CE%B9%CE%B1%20%CF%84%CE%BF%20%CE%BA%CE%B1%CF%81%CF%83%CF%84%CE%B9%CE%BA%CF%8C%20%CF%83%CF%8D%CF%83%CF%84%CE%B7%CE%BC%CE%B1%20%CE%A0%CE%AC%CF%81%CE%BD%CF%89%CE%BD%CE%B1%20%CF%80%CF%81%CE%B9%CE%BD%20%CE%BF%CF%81%CE%B9%CF%83%CF%84%CE%B9%CE%BA%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CE%B8%CE%B5%CE%AF%20%CE%BF%CF%80%CE%BF%CE%B9%CE%B1%CE%B4%CE%AE%CF%80%CE%BF%CF%84%CE%B5%20%CE%AC%CE%B4%CE%B5%CE%B9%CE%B1%0A-%20%CE%9D%CE%B1%20%CE%B5%CF%85%CE%B8%CF%85%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%AF%CF%83%CE%B5%CE%B9%20%CF%84%CE%BF%20%CF%80%CE%BB%CE%B1%CE%AF%CF%83%CE%B9%CE%BF%20%CE%BC%CE%B5%20%CF%84%CE%B9%CF%82%20%CF%85%CF%80%CE%BF%CF%87%CF%81%CE%B5%CF%8E%CF%83%CE%B5%CE%B9%CF%82%20%CE%A3%CF%87%CE%B5%CE%B4%CE%AF%CE%BF%CF%85%20%CE%94%CE%B9%CE%B1%CF%87%CE%B5%CE%AF%CF%81%CE%B9%CF%83%CE%B7%CF%82%20UNESCO%20%28%CF%80%CF%81%CE%BF%CE%B8%CE%B5%CF%83%CE%BC%CE%AF%CE%B1%2030%20%CE%A3%CE%B5%CF%80%CF%84%CE%B5%CE%BC%CE%B2%CF%81%CE%AF%CE%BF%CF%85%202027%29%0A%0A%CE%9C%CE%B5%20%CE%B5%CE%BA%CF%84%CE%AF%CE%BC%CE%B7%CF%83%CE%B7%2C%0A%0A%5B%CE%A4%CE%BF%20%CE%8C%CE%BD%CE%BF%CE%BC%CE%AC%20%CF%83%CE%B1%CF%82%5D%0A%5B%CE%A0%CF%8C%CE%BB%CE%B7%2C%20%CE%A7%CF%8E%CF%81%CE%B1%5D%0A%0A---%0A%0ATo%20the%20Secretary%20General%2C%20Ministry%20of%20Environment%20and%20Energy%2C%0A%0AI%20am%20submitting%20comments%20on%20the%20new%20Spatial%20Planning%20Framework%20for%20Renewable%20Energy%20Sources%20%28consultation%20closing%20June%2024%2C%202026%29.%0A%0AI%20support%20the%20prohibition%20on%20wind%20farms%20above%201%2C200%20metres%20and%20the%20protection%20of%20named%20mountain%20regions%20including%20Parnon.%20However%2C%20I%20am%20deeply%20concerned%20that%20the%20grandfather%20clause%20exempting%20already-licensed%20projects%20renders%20these%20protections%20meaningless%20for%20Mount%20Zavitsa%20%28North%20Kynouria%29%20and%20the%20Kosmas%2FParnon%20installations%20%28South%20Kynouria%29%2C%20both%20of%20which%20fall%20within%20the%20UNESCO%20Parnon%20Biosphere%20Reserve%20designated%20in%20September%202025.%0A%0AI%20urge%20the%20Ministry%20to%3A%0A-%20Apply%20the%201%2C200m%20prohibition%20retroactively%20to%20all%20projects%20not%20yet%20under%20construction%0A-%20Require%20a%20unified%20hydrogeological%20impact%20assessment%20for%20the%20Parnon%20karst%20system%20before%20any%20permits%20are%20finalised%0A-%20Align%20the%20spatial%20framework%20with%20the%20UNESCO%20Management%20Plan%20obligations%20due%20September%2030%2C%202027%0A%0AYours%20sincerely%2C%0A%0A%5BYour%20Name%20%2F%20%CE%A4%CE%BF%20%CE%8C%CE%BD%CE%BF%CE%BC%CE%AC%20%CF%83%CE%B1%CF%82%5D%0A%5BCity%2C%20Country%20%2F%20%CE%A0%CF%8C%CE%BB%CE%B7%2C%20%CE%A7%CF%8E%CF%81%CE%B1%5D">
+        &#x2709;&#xFE0F;&nbsp; <span class="gr">ΥΠΟΒΟΛΗ ΣΧΟΛΙΩΝ ΔΙΑΒΟΥΛΕΥΣΗΣ</span><span class="en">SUBMIT CONSULTATION COMMENT</span>
       </a>
-
       <div class="how-it-works" style="opacity:0.7; margin-top:0.75rem; font-size:0.8rem; font-family:Arial,sans-serif;">
-        Sends to: Greek Ministry of Environment, Secretary General only.
+        <span class="gr">Αποστολή σε: Γενικό Γραμματέα, Υπουργείο Περιβάλλοντος και Ενέργειας.</span>
+        <span class="en">Sends to: Greek Ministry of Environment, Secretary General only.</span>
       </div>
     </div>
 
@@ -443,101 +224,152 @@
     <div class="countdown-bar">
       <div class="countdown-number" id="countdown-days">10</div>
       <div class="countdown-label">
-        <strong>days until consultation closes</strong>
-        June 24, 2026. Submissions become a permanent EU legal record.
+        <strong>
+          <span class="gr">ημέρες έως το τέλος της διαβούλευσης</span>
+          <span class="en">days until consultation closes</span>
+        </strong>
+        <span class="gr">24 Ιουνίου 2026. Οι υποβολές γίνονται μόνιμο νομικό αρχείο στην ΕΕ.</span>
+        <span class="en">June 24, 2026. Submissions become a permanent EU legal record.</span>
       </div>
     </div>
 
     <!-- SHARE NUDGE -->
     <div class="share-nudge">
-      An inbox in Brussels that receives a hundred emails can be managed. Ten thousand cannot.<br>
-      Share this page: <a href="https://geoperdis.github.io/zavitsa-greece/">https://geoperdis.github.io/zavitsa-greece/</a>
+      <span class="gr">Ένα inbox στις Βρυξέλλες που δέχεται εκατό email μπορεί να διαχειριστεί. Δέκα χιλιάδες δεν μπορούν.</span>
+      <span class="en">An inbox in Brussels that receives a hundred emails can be managed. Ten thousand cannot.</span>
+      <br>
+      <span class="gr">Μοιραστείτε αυτή τη σελίδα:</span>
+      <span class="en">Share this page:</span>
+      <a href="https://geoperdis.github.io/zavitsa-greece/">https://geoperdis.github.io/zavitsa-greece/</a>
     </div>
 
     <!-- FACT CARDS -->
     <div class="facts">
       <div class="fact-card">
-        <h4>The water system</h4>
-        <p>The Parnon karst takes 190 hours to move water underground from inland sinkholes to the Anavalos springs at Kiveri. Pausanias documented it in the second century AD. Modern dye-tracing confirmed the route 1,800 years later.</p>
+        <h4><span class="gr">Το σύστημα νερού</span><span class="en">The water system</span></h4>
+        <p>
+          <span class="gr">Ο καρστικός Πάρνωνας χρειάζεται 190 ώρες για να μεταφέρει νερό υπόγεια από ηπειρωτικές καταβόθρες στις πηγές Αναβάλου στο Κιβέρι. Ο Παυσανίας το κατέγραψε τον 2ο αιώνα μ.Χ. Η σύγχρονη ιχνηθέτηση επιβεβαίωσε τη διαδρομή 1.800 χρόνια αργότερα.</span>
+          <span class="en">The Parnon karst takes 190 hours to move water underground from inland sinkholes to the Anavalos springs at Kiveri. Pausanias documented it in the second century AD. Modern dye-tracing confirmed the route 1,800 years later.</span>
+        </p>
       </div>
       <div class="fact-card">
-        <h4>What's at risk</h4>
-        <p>50,000 acres of citrus and olive groves on the Thyrean and Argive plains depend on this karst aquifer. When freshwater pressure drops in a coastal karst system, seawater intrudes. The wells go saline. The plain stops producing.</p>
+        <h4><span class="gr">Τι κινδυνεύει</span><span class="en">What's at risk</span></h4>
+        <p>
+          <span class="gr">Πάνω από 200.000 στρέμματα εσπεριδοειδών και ελαιώνων στη Θυρεατική και Αργολική πεδιάδα εξαρτώνται από αυτόν τον υδροφόρο. Όταν η πίεση του γλυκού νερού πέσει σε παράκτιο καρστικό σύστημα, η θάλασσα μπαίνει. Τα πηγάδια γίνονται αλμυρά. Η πεδιάδα σταματά να παράγει.</span>
+          <span class="en">50,000 acres of citrus and olive groves on the Thyrean and Argive plains depend on this karst aquifer. When freshwater pressure drops in a coastal karst system, seawater intrudes. The wells go saline. The plain stops producing.</span>
+        </p>
       </div>
       <div class="fact-card">
-        <h4>The permit trick</h4>
-        <p>One project split across two municipalities to avoid a unified environmental review. A University of Ioannina study (Prof. Vasiliki Kati) showed turbines could achieve 96% efficiency on lower terrain. The developers chose the pristine peaks anyway: public land in Natura 2000 zones is cheaper and easier than private land at lower elevations.</p>
+        <h4><span class="gr">Το τέχνασμα</span><span class="en">The permit trick</span></h4>
+        <p>
+          <span class="gr">Ένα έργο χωρίστηκε σε δύο δήμους για αποφυγή ενιαίας περιβαλλοντικής αξιολόγησης. Έρευνα Πανεπιστημίου Ιωαννίνων (Κ. Βασιλική Κάτη) έδειξε 96% αποδοτικότητα σε χαμηλότερο έδαφος. Οι κατασκευαστές επέλεξαν τις παρθένες κορυφές: η δημόσια γη σε ζώνες Natura 2000 είναι φθηνότερη και πιο εύκολα προσβάσιμη.</span>
+          <span class="en">One project split across two municipalities to avoid a unified environmental review. A University of Ioannina study (Prof. Vasiliki Kati) showed turbines could achieve 96% efficiency on lower terrain. The developers chose the pristine peaks anyway: public land in Natura 2000 zones is cheaper and easier than private land at lower elevations.</span>
+        </p>
       </div>
       <div class="fact-card">
-        <h4>Community vote</h4>
-        <p>Twelve communities at the May 25, 2026 North Kynouria council meeting voted against. The council previously hired a lawyer and filed against the producer certification at RAAEY. Today's march on Zavitsa is that vote made in person.</p>
+        <h4><span class="gr">Ψήφος κοινότητας</span><span class="en">Community vote</span></h4>
+        <p>
+          <span class="gr">Δώδεκα κοινότητες στη συνεδρίαση Βόρειας Κυνουρίας της 25ης Μαΐου 2026 ψήφισαν κατά. Το συμβούλιο είχε ήδη προσλάβει δικηγόρο και καταθέσει προσφυγή κατά της πιστοποίησης παραγωγού στη ΡΑΑΕΥ. Η σημερινή άνοδος στον Ζαβίτσα είναι αυτή η ψήφος, δια ζώσης.</span>
+          <span class="en">Twelve communities at the May 25, 2026 North Kynouria council meeting voted against. The council previously hired a lawyer and filed against the producer certification at RAAEY. Today's march on Zavitsa is that vote made in person.</span>
+        </p>
       </div>
       <div class="fact-card deadline">
-        <h4>Deadline: June 24, 2026</h4>
-        <p>Public consultation on Greece's new renewable energy spatial framework closes June 24, 2026. Your submission is a permanent legal record in Brussels. Licensed projects are exempt from the new 1,200m prohibition. That is exactly why the record matters.</p>
+        <h4><span class="gr">Προθεσμία: 24 Ιουνίου 2026</span><span class="en">Deadline: June 24, 2026</span></h4>
+        <p>
+          <span class="gr">Η δημόσια διαβούλευση για το νέο χωροταξικό πλαίσιο ΑΠΕ κλείνει 24 Ιουνίου 2026. Η υποβολή σας είναι μόνιμο νομικό αρχείο στις Βρυξέλλες. Τα αδειοδοτημένα έργα εξαιρούνται από την απαγόρευση 1.200μ. Ακριβώς γι' αυτό έχει σημασία το αρχείο.</span>
+          <span class="en">Public consultation on Greece's new renewable energy spatial framework closes June 24, 2026. Your submission is a permanent legal record in Brussels. Licensed projects are exempt from the new 1,200m prohibition. That is exactly why the record matters.</span>
+        </p>
       </div>
       <div class="fact-card deadline">
-        <h4>Deadline: September 2027</h4>
-        <p>Greece must file a full UNESCO Management Plan for the 516,412-hectare Parnon Biosphere Reserve by September 30, 2027. Once codified, industrial permitting on the mountain becomes dramatically harder. Developers are racing to beat it.</p>
+        <h4><span class="gr">Προθεσμία: Σεπτέμβριος 2027</span><span class="en">Deadline: September 2027</span></h4>
+        <p>
+          <span class="gr">Η Ελλάδα πρέπει να υποβάλει πλήρες Σχέδιο Διαχείρισης UNESCO για το Αποθεματικό Βιόσφαιρας Πάρνωνα-Ακρωτηρίου Μαλέα (516.412 εκτ.) έως 30 Σεπτεμβρίου 2027. Μόλις κωδικοποιηθεί, η βιομηχανική αδειοδότηση στο βουνό γίνεται πολύ δυσκολότερη. Οι κατασκευαστές τρέχουν να την προλάβουν.</span>
+          <span class="en">Greece must file a full UNESCO Management Plan for the 516,412-hectare Parnon Biosphere Reserve by September 30, 2027. Once codified, industrial permitting on the mountain becomes dramatically harder. Developers are racing to beat it.</span>
+        </p>
       </div>
     </div>
 
     <!-- FULL STORY -->
     <div class="full-story" id="full-story">
-      <h2>The Full Story</h2>
 
-      <h3>The mountain is a machine</h3>
-      <p>Mount Zavitsa is karst limestone. Rain disappears into it rather than running off, filtering down through fractures and sinkholes and underground conduits toward the coast. Dye-tracing experiments have followed water from sinkholes on the Arcadian plateau through that underground network to where it resurfaces: the Anavalos submarine springs on the Argolic Gulf, a journey of 190 hours underground. Pausanias wrote about those springs in the second century AD. He called them the Dini. It took modern hydrogeology another 1,800 years to confirm the route he described.</p>
+      <div class="gr">
+        <h2>Η Πλήρης Ιστορία</h2>
+        <h3>Το βουνό είναι μηχανή</h3>
+        <p>Ο Ζαβίτσας είναι καρστικός ασβεστόλιθος. Η βροχή εξαφανίζεται μέσα του αντί να απορρέει, φιλτράρεται μέσα από ρήγματα, καταβόθρες και υπόγειους αγωγούς προς την ακτή. Πειράματα ιχνηθέτησης ακολούθησαν το νερό από καταβόθρες στο Αρκαδικό οροπέδιο ως εκεί που αναδύεται ξανά: τις υποθαλάσσιες πηγές του Αναβάλου στον Αργολικό Κόλπο, ύστερα από 190 ώρες υπόγειας πορείας. Ο Παυσανίας έγραψε για εκείνες τις πηγές τον 2ο αιώνα μ.Χ. Τις αποκαλούσε Δίνη. Η σύγχρονη υδρογεωλογία χρειάστηκε άλλα 1.800 χρόνια για να επιβεβαιώσει τη διαδρομή που εκείνος περιέγραψε.</p>
+        <p>Αυτές οι πηγές τροφοδοτούν γεωτρήσεις αγροτικής χρήσης σε πάνω από 200.000 στρέμματα εσπεριδοειδών και ελαιώνων στη Θυρεατική και Αργολική πεδιάδα. Η εγκατάσταση ανεμογεννητριών σε καρστικό έδαφος σημαίνει 13 χιλιόμετρα νέου δρόμου πρόσβασης, διάτρηση και ανατίναξη βράχου, εκατοντάδες τόνοι σκυροδέματος ανά θεμέλιο. Κάθε έκρηξη συντρίβει υπόγειους αγωγούς. Όταν πέσει η πίεση του γλυκού νερού σε έναν παράκτιο καρστικό υδροφόρο, η θάλασσα καταλαμβάνει το κενό. Το νερό γίνεται αλμυρό. Η πεδιάδα σταματά να παράγει.</p>
 
-      <p>Those springs feed agricultural wells across the Thyreatis and Argive plains, more than 50,000 acres of citrus and olive cultivation. Wind turbine installation in karst terrain means 13 kilometres of new access road, drilling and blasting into bedrock, and hundreds of tonnes of concrete poured per foundation. Each detonation shatters underground conduits. When freshwater pressure drops in a coastal karst aquifer, seawater moves in to fill the void. The wells go saline. The plain stops producing.</p>
+        <h3>Πώς πέρασαν οι άδειες</h3>
+        <p>Ο Φορέας Διαχείρισης Πάρνωνα καταργήθηκε με υπουργική απόφαση στις 10 Μαρτίου 2022. Το τελευταίο του ενημερωτικό δελτίο έφερε το λογότυπο του Αποθεματικού Βιόσφαιρας της UNESCO που είχε αγωνιστεί χρόνια να εξασφαλίσει. Στις 10 Μαΐου 2021, δέκα μήνες πριν από εκείνο το διάταγμα, η Πρόεδρος της Δημοκρατίας Κατερίνα Σακελλαροπούλου επισκέφτηκε τον υγρότοπο του Μουστού. Ο Δημήτριος Μήλιος, πρόεδρος του Φορέα Διαχείρισης, την ενημέρωσε προσωπικά για την οικολογική αξία της περιοχής. Εννέα μήνες αργότερα, υπουργικό διάταγμα κατήργησε τον φορέα που διοικούσε. Μέσα σε δύο χρόνια, οι μπουλντόζες δούλευαν στον Κοσμά.</p>
+        <p>Η αδειοδότηση σχεδιάστηκε ώστε να αποτρέπει ενωμένη αντίσταση. Το έργο Ζαβίτσα υπάγεται στον Δήμο Βόρειας Κυνουρίας. Οι εγκαταστάσεις κοντά στον Κοσμά υπάγονται στον Δήμο Νότιας Κυνουρίας. Δύο δήμοι, δύο χωριστές διαδικασίες, καμία απαίτηση ενιαίας αξιολόγησης για ένα ενιαίο οικοσύστημα. Έρευνα της καθηγήτριας Βασιλικής Κάτη έδειξε ότι οι ανεμογεννήτριες θα μπορούσαν να τοποθετηθούν σε χαμηλότερο έδαφος με απώλεια μόλις 4%. Οι κατασκευαστές επέλεξαν τις παρθένες κορυφές. Σε έρευνα του Euronews ρωτήθηκαν ευθέως γιατί. Η απάντηση ήταν ωμή: η δημόσια γη σε ζώνες Natura 2000 είναι φθηνότερη. Δεν υπάρχουν ιδιοκτήτες να διαπραγματευτείς. Το επιχείρημα της αποδοτικότητας είναι πρόσχημα.</p>
+        <p>Το δηλωμένο έργο περιλαμβάνει υποσταθμό στο Κάτω Βέρβενο, συνδεδεμένο με τις ανεμογεννήτριες με 17 χιλιόμετρα υπόγειου καλωδίου. Αυτό που προβλημάτισε ήταν η γη που αγοράζει ο κατασκευαστής γύρω από τον υποσταθμό πέρα από τις ανάγκες του δηλωμένου έργου. Η υποψία είναι αποθήκευση ενέργειας σε μπαταρίες, κάτι που θα επέκτεινε σημαντικά το περιβαλλοντικό αποτύπωμα και θα απαιτούσε νέα ΜΠΕ. Ο κατασκευαστής παρακάμπτει αυτό δηλώνοντας κάθε αλλαγή ως μικρή τροποποίηση. Οι αγορές γης λένε άλλη ιστορία. Πυρκαγιές σε μπαταρίες λιθίου προκαλούν θερμική διαφυγή, αυτοτροφοδοτούμενη χημική αντίδραση που το νερό αδυνατεί να σβήσει, μόνο να ψύξει. Η φωτιά μπορεί να αναζωπυρωθεί ώρες αφότου φαίνεται να έχει σβήσει. Σε ένα κατάξερο ελληνικό βουνό τον Αύγουστο, μέσα σε δάση ελάτης και κέδρου, αυτό δεν είναι θεωρητικός κίνδυνος.</p>
 
-      <h3>How the permits got through</h3>
-      <p>The Parnon Management Body, the institutional oversight for conservation in the area, was dissolved by ministerial decision on March 10, 2022. Its last newsletter had featured the logo of the UNESCO Biosphere Reserve it had spent years helping to secure. On May 10, 2021, ten months before that decree, the President of the Hellenic Republic, Katerina Sakellaropoulou, visited the Moustos wetland at the foot of Parnon. Dimitrios Milios, president of the Management Body, briefed her personally on the ecological and economic value of the protected area. The visit was photographed. It was published. It is on the public record. Nine months later, a ministerial decree abolished the body he led. Within two years of its dissolution, bulldozers were working in Kosmas.</p>
+        <h3>Το πραγματικό κίνητρο και τρεις προθεσμίες</h3>
+        <p>Η Ελλάδα πρέπει να δαπανήσει 30,5 δισ. ευρώ από το Ταμείο Ανάκαμψης και Ανθεκτικότητας της ΕΕ πριν από την αυστηρή προθεσμία της 26ης Αυγούστου 2026. Τα έργα ΑΠΕ μετρούν για τους στόχους αυτούς. Το 2025, το ελληνικό δίκτυο περιόρισε το 6,6% όλης της ανανεώσιμης ενέργειας που παρήχθη. Το ποσοστό αναμένεται να πλησιάσει το 12% το 2026. Η χώρα δεν έχει πρόβλημα παραγωγής. Έχει προθεσμία επιδοτήσεων. Ένα νέο καλώδιο διασύνδεσης, το Green Aegean, σχεδιάζεται για να δρομολογεί πλεόνασμα ελληνικής ηλεκτρικής ενέργειας κατευθείαν στη Γερμανία.</p>
+        <p>Η προθεσμία της διαβούλευσης είναι η 24η Ιουνίου. Η προθεσμία UNESCO είναι η 30η Σεπτεμβρίου 2027. Οι κοινότητες του Πάρνωνα δεν όρισαν καμία από αυτές τις προθεσμίες. Τα δύο κουμπιά στην κορυφή αυτής της σελίδας βάζουν το όνομά σας στο νομικό αρχείο. Αυτό το αρχείο δεν λήγει.</p>
+        <p>Η Βόρεια Κυνουρία είχε 9.483 κατοίκους στην απογραφή του 2021 σε 577 τ.χλμ. Το χωριό Δολιανά είχε 1.682 κατοίκους το 1879. Το 2021 έφτανε τους 723. Οι κατασκευαστές αιολικών πηγαίνουν εκεί όπου το πολιτικό βάρος είναι ελαφρύ, όπου οι κοινότητες είναι ήδη ερημωμένες. Αυτές οι κοινότητες δεν πολεμούν από θέση ισχύος. Αυτός ακριβώς είναι ο λόγος που επιλέχθηκαν.</p>
+      </div>
 
-      <p>The permit structure was built to prevent unified opposition. The Zavitsa project falls under North Kynouria municipality. The installations near Kosmas fall under South Kynouria. Two municipalities, two separate approval processes, no requirement for a unified environmental review of a single shared ecosystem. Research by University of Ioannina professor Vasiliki Kati showed the turbines could be placed on lower, less pristine terrain with a loss of only 4% in efficiency. The developers chose the pristine peaks anyway. Asked directly in a Euronews investigation why Greek wind projects target untouched summits rather than degraded lower slopes, the answer was blunt: public land in Natura 2000 areas is cheaper and easier to access than private land at lower altitudes. No landowners to negotiate with. The efficiency argument is a pretext.</p>
+      <div class="en">
+        <h2>The Full Story</h2>
+        <h3>The mountain is a machine</h3>
+        <p>Mount Zavitsa is karst limestone. Rain disappears into it rather than running off, filtering down through fractures and sinkholes and underground conduits toward the coast. Dye-tracing experiments have followed water from sinkholes on the Arcadian plateau through that underground network to where it resurfaces: the Anavalos submarine springs on the Argolic Gulf, a journey of 190 hours underground. Pausanias wrote about those springs in the second century AD. He called them the Dini. It took modern hydrogeology another 1,800 years to confirm the route he described.</p>
+        <p>Those springs feed agricultural wells across the Thyreatis and Argive plains, more than 50,000 acres of citrus and olive cultivation. Wind turbine installation in karst terrain means 13 kilometres of new access road, drilling and blasting into bedrock, and hundreds of tonnes of concrete poured per foundation. Each detonation shatters underground conduits. When freshwater pressure drops in a coastal karst aquifer, seawater moves in to fill the void. The wells go saline. The plain stops producing.</p>
 
-      <p>The declared project includes an electrical substation at Kato Vervena, connected to the turbines by 17 kilometres of underground cable. What drew concern at the May 25 council meeting was land purchases around that substation far exceeding the declared footprint. The suspicion is battery storage, which would substantially expand the project's environmental footprint and require a new impact assessment. The developer is sidestepping this by filing each change as a minor amendment. Lithium battery fires involve thermal runaway, a self-sustaining chemical reaction that water cannot extinguish, only cool. The fire can reignite hours after appearing to go out. On a bone-dry Greek mountain in August, in fir and cedar forest, that is not a theoretical concern. It is a documented hazard category.</p>
+        <h3>How the permits got through</h3>
+        <p>The Parnon Management Body was dissolved by ministerial decision on March 10, 2022. Its last newsletter had featured the logo of the UNESCO Biosphere Reserve it had spent years helping to secure. On May 10, 2021, ten months before that decree, President Katerina Sakellaropoulou visited the Moustos wetland at the foot of Parnon. Dimitrios Milios, president of the Management Body, briefed her personally on the ecological value of the protected area. The visit was photographed. It was published. It is on the public record. Nine months later, a ministerial decree abolished the body he led. Within two years of its dissolution, bulldozers were working in Kosmas.</p>
+        <p>The permit structure was built to prevent unified opposition. The Zavitsa project falls under North Kynouria municipality. The installations near Kosmas fall under South Kynouria. Two municipalities, two separate approval processes, no requirement for a unified environmental review of a single shared ecosystem. University of Ioannina professor Vasiliki Kati showed the turbines could be placed on lower, less pristine terrain with a loss of only 4% in efficiency. The developers chose the pristine peaks anyway. Asked directly in a Euronews investigation why, the answer was blunt: public land in Natura 2000 areas is cheaper and easier to access. No landowners to negotiate with. The efficiency argument is a pretext.</p>
+        <p>The declared project includes an electrical substation at Kato Vervena, connected to the turbines by 17 kilometres of underground cable. What drew concern at the May 25 council meeting was land purchases around that substation far exceeding the declared footprint. The suspicion is battery storage, which would substantially expand the project's environmental footprint and require a new impact assessment. The developer is sidestepping this by filing each change as a minor amendment. Lithium battery fires involve thermal runaway, a self-sustaining chemical reaction that water cannot extinguish, only cool. The fire can reignite hours after appearing to go out. On a bone-dry Greek mountain in August, in fir and cedar forest, that is not a theoretical concern. It is a documented hazard category.</p>
 
-      <h3>The real motive and three deadlines</h3>
-      <p>Greece has to spend 30.5 billion euros in EU Recovery and Resilience Facility grants and loans before a hard deadline of August 26, 2026. Renewable energy projects count toward the milestones. In 2025 the Greek grid curtailed 6.6% of all renewable energy produced, nearly 1,900 gigawatt-hours discarded for lack of transmission capacity. That figure is projected to approach 12% in 2026. The country does not have a generation shortage. It has a subsidy deadline. A new interconnector called the Green Aegean is being designed to route surplus Greek-generated electricity directly to Germany.</p>
+        <h3>The real motive and three deadlines</h3>
+        <p>Greece has to spend 30.5 billion euros in EU Recovery and Resilience Facility grants and loans before a hard deadline of August 26, 2026. Renewable energy projects count toward the milestones. In 2025 the Greek grid curtailed 6.6% of all renewable energy produced, nearly 1,900 gigawatt-hours discarded for lack of transmission capacity. That figure is projected to approach 12% in 2026. The country does not have a generation shortage. It has a subsidy deadline. A new interconnector called the Green Aegean is being designed to route surplus Greek-generated electricity directly to Germany.</p>
+        <p>The consultation deadline is June 24. The UNESCO Management Plan deadline is September 30, 2027. The communities of Parnon did not set any of these deadlines. The two action buttons at the top of this page put your name on the legal record in Brussels. That record does not expire.</p>
+        <p>North Kynouria had 9,483 residents at the 2021 census across 577 square kilometres. The village of Doliana had 1,682 residents in 1879. By 2021 it had 723. Wind developers go where political weight is low, where communities are already hollowed out and isolated. These communities are not fighting from strength. That is precisely why they were chosen.</p>
+      </div>
 
-      <p>The consultation deadline is June 24. The UNESCO Management Plan deadline is September 30, 2027. The communities of Parnon did not set any of these deadlines. Wind companies are racing to get their permits locked in before either window closes. The two action buttons at the top of this page put your name on the legal record in Brussels. That record does not expire.</p>
-
-      <p>North Kynouria had 9,483 residents at the 2021 census across 577 square kilometres. The village of Doliana had 1,682 residents in 1879. By 2021 it had 723. Wind developers go where political weight is low, where no constituency-focused MP is watching, where communities are already hollowed out and isolated. These communities are not fighting from strength. That is precisely why they were chosen.</p>
     </div>
 
   </main>
 
+  <!-- AUTHOR NOTE -->
   <div style="max-width:700px; margin:0 auto; padding:0 1.25rem 2rem;">
     <div style="background:white; border-radius:6px; padding:1.25rem 1.4rem; font-size:0.88rem; line-height:1.65; color:#444;">
-      <strong style="color:#1a3a1a;">About the author.</strong> George Perdicaris is a Greek-Canadian mediamaker who writes about the Arcadian Meadow, the Greece of the Greeks, and the world of new and merging media and technology. His family's olive groves sit at the foot of Mount Zavitsa. He writes independently, representing no organization, political party, or advocacy group, only his own four decades in media and communications, applied to a story the communities here are fighting to tell. He can be reached via <a href="https://linktr.ee/geoperdis" style="color:#1a3a1a;">linktr.ee/geoperdis</a>.
+      <div class="gr">
+        <strong style="color:#1a3a1a;">Σχετικά με τον συγγραφέα.</strong> Ο Γιώργος Περδικάρης είναι Ελληνοκαναδός δημιουργός μέσων που γράφει για το Αρκαδικό Λιβάδι, την Ελλάδα των Ελλήνων και τον κόσμο των νέων και συγχωνευόμενων μέσων και τεχνολογίας. Τα ελαιόδεντρα της οικογένειάς του βρίσκονται στους πρόποδες του Ζαβίτσα. Γράφει ανεξάρτητα, εκπροσωπώντας καμία οργάνωση, πολιτικό κόμμα ή ομάδα, μόνο τις τέσσερις δεκαετίες εμπειρίας του στα μέσα και την επικοινωνία, στην υπηρεσία μιας ιστορίας που οι κοινότητες εδώ αγωνίζονται να αφηγηθούν. Μπορείτε να τον βρείτε στο <a href="https://linktr.ee/geoperdis" style="color:#1a3a1a;">linktr.ee/geoperdis</a>.
+      </div>
+      <div class="en">
+        <strong style="color:#1a3a1a;">About the author.</strong> George Perdicaris is a Greek-Canadian mediamaker who writes about the Arcadian Meadow, the Greece of the Greeks, and the world of new and merging media and technology. His family's olive groves sit at the foot of Mount Zavitsa. He writes independently, representing no organization, political party, or advocacy group, only his own four decades in media and communications, applied to a story the communities here are fighting to tell. He can be reached via <a href="https://linktr.ee/geoperdis" style="color:#1a3a1a;">linktr.ee/geoperdis</a>.
+      </div>
     </div>
   </div>
 
   <footer>
-    In support of the communities of Kynouria, Arcadia, Greece &nbsp;&middot;&nbsp; June 2026<br>
+    <span class="gr">Σε υποστήριξη των κοινοτήτων Κυνουρίας, Αρκαδίας, Ελλάδα &nbsp;&middot;&nbsp; Ιούνιος 2026</span>
+    <span class="en">In support of the communities of Kynouria, Arcadia, Greece &nbsp;&middot;&nbsp; June 2026</span>
+    <br>
     <span style="font-size:0.75rem; opacity:0.7;">geoperdis.github.io/zavitsa-greece</span>
   </footer>
 
   <script>
-    // Live countdown to June 24, 2026 (23:59 Greek time = UTC+3)
+    function setLang(lang) {
+      document.body.className = 'show-' + lang;
+      document.getElementById('btn-gr').classList.toggle('active', lang === 'gr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang === 'gr' ? 'el' : 'en';
+    }
+
+    // Live countdown to June 24, 2026 23:59 Greek time (UTC+3)
     (function() {
       var deadline = new Date('2026-06-24T23:59:00+03:00');
       var now = new Date();
       var diff = deadline - now;
-      if (diff > 0) {
-        var days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-        var label = days === 1 ? '1 DAY' : days + ' DAYS';
-        var el1 = document.getElementById('days-left');
-        var el2 = document.getElementById('countdown-days');
-        if (el1) el1.textContent = days;
-        if (el2) el2.textContent = days;
-      } else {
-        var el1 = document.getElementById('days-left');
-        var el2 = document.getElementById('countdown-days');
-        if (el1) el1.textContent = 'CLOSED';
-        if (el2) { el2.textContent = '0'; el2.style.color = '#888'; }
-      }
+      var days = diff > 0 ? Math.ceil(diff / (1000 * 60 * 60 * 24)) : 0;
+      ['days-left','days-left-en','countdown-days'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          if (diff > 0) { el.textContent = days; }
+          else { el.textContent = id === 'countdown-days' ? '0' : 'ΕΚΛΗΞΕ / CLOSED'; }
+        }
+      });
     })();
   </script>
 
