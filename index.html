@@ -403,6 +403,9 @@
       document.documentElement.lang = lang === 'gr' ? 'el' : 'en';
     }
 
+    // Default to English
+    setLang('en');
+
     // Live countdown to June 24, 2026 23:59 Greek time (UTC+3)
     (function() {
       var deadline = new Date('2026-06-24T23:59:00+03:00');
